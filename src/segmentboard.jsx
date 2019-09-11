@@ -3,19 +3,17 @@ import * as Api from "./api";
 import Leaderboard from "./leaderboard";
 import { useStoreActions } from "easy-peasy";
 
+
 const urlFunctions = {
   "all" : Api.createSegmentLeaderboardBekk,
   "year": Api.createSegmentLeaderboardBekkThisYear
 }
 
 
-
 const SegmentBoard = props => {
     const [entries,setEntries] = useState([])
     const [payload,setPayload] = useState(null)
     const segment = props.segment;
-
-    
 
     useEffect( () => {
       const leaderboardRequestCreator = urlFunctions[props.dateRange]
@@ -34,7 +32,10 @@ const SegmentBoard = props => {
       
       useStoreActions(actions => actions.addLeaderboard)(payload)
     
-    console.log("paylaod",payload);
+
+    
+    
+    console.log("payload",payload);
     return (
         <>
             <Leaderboard 

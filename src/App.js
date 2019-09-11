@@ -2,16 +2,30 @@ import React from 'react';
 import Page from './Page';
 import { StoreProvider, createStore, action } from 'easy-peasy';
 
-
 const store = createStore({
   leaderboards : {
     all:{},
     year:{}
   },
+  segments : [],
   addLeaderboard : action((state, payload) => {
     if (!payload) return;
-    state.leaderboards[payload.dateRange][payload.id] = payload.leaderboard;
+
+    const segment = payload.id;
+
+    const addEntry = entry => {
+      entry.segment = segment;
+
+      const curEntries = state.leaderboards[payload.dateRange][entry.athlete_name] || {};
+      curEntries[entry.segment] = entry;
+      state.leaderboards[payload.dateRange][entry.athlete_name] = curEntries;
+    }
+    payload.leaderboard.map( addEntry );
+
+    state.segments.push(segment);
   })
+
+  
   
 });
 
