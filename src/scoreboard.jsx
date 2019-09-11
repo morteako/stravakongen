@@ -8,8 +8,15 @@ const Scoreboard = props => {
     const segments = useStoreState( state => state.segments );
     const segmentRow = segments.map(seg => <th>{seg}</th>);
     
-    const createRow = athleteRecord => <tr> {Object.values(athleteRecord).map( x => <ScoreEntry {...x} />)} </tr>;
-    const dataRows = Object.values(allTime).map(createRow);
+    const createRow = ([athlete_name,athleteRecord]) => (
+        <tr> 
+            <td> 
+                {athlete_name}
+            </td>
+            {Object.values(athleteRecord).map( x => <ScoreEntry {...x} />)}
+        </tr>
+    );
+    const dataRows = Object.entries(allTime).map(createRow);
 
     return (
         <>  
@@ -24,11 +31,6 @@ const Scoreboard = props => {
                 </thead>
                 <tbody>
                     {dataRows}
-                    {/* {[1,2,3].map(createRowT)} */}
-                    {/* {dataRows} */}
-                    {/* {props.entries.map( 
-                        (entry,ind) => <ScoreEntry key={ind} {...entry} />
-                    )} */}
                 </tbody>
             </Table>
             {JSON.stringify(allTime)}
