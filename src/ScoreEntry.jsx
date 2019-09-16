@@ -15,7 +15,7 @@ const secToMMSS = timeInSecStr => {
 }
 const ScoreEntry = props => {
     const {athlete_name,elapsed_time, start_date_local,rank} = props;
-    const date = start_date_local.substr(0,10).split("-").reverse().join(" ");
+    const date = start_date_local.substr(0,10).split("-").reverse().join(".");
     const elapsedTimeInSeconds = secToMMSS(elapsed_time);
     const text = `${elapsedTimeInSeconds} (#${rank})`;
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import { useStoreState } from "easy-peasy";
 import Table from 'react-bootstrap/Table';
 import {createScoreEntry} from "./ScoreEntry";
-import { cyclingSegments } from "./data/segments";
+import { allSegments } from "./data/segments";
 
 const Scoreboard = props => {
     const allTime = useStoreState( state => state.leaderboards.all );
@@ -12,12 +12,12 @@ const Scoreboard = props => {
     const createSegmentLink = seg => (
         <th> 
             <a href={segmentUrl + seg}> 
-                {cyclingSegments[seg].name} 
+                {allSegments[seg].name} 
             </a> 
         </th>
     );
-    const _segmentRow = segments.map(seg => <th>{seg}</th>);
-    const segmentRow = segments.map(createSegmentLink);
+    // const _segmentRow = segments.map(seg => <th>{seg}</th>);
+    const segmentRow = Array.from(segments).map(createSegmentLink);
     
 
     const createRow = ([athlete_name,athleteRecord]) => (
@@ -25,7 +25,7 @@ const Scoreboard = props => {
             <td> 
                 {athlete_name}
             </td>
-            {segments.map( seg => createScoreEntry(athleteRecord[seg]))}
+            {Array.from(segments).map( seg => createScoreEntry(athleteRecord[seg]))}
         </tr>
     );
     const dataRows = Object.entries(allTime).map(createRow);
