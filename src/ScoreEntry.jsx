@@ -1,5 +1,11 @@
 import React from "react";
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
+
+
+export const createScoreEntry = data => data ? <ScoreEntry {...data}/> : <EmptyScoreEntry />;
+
+const EmptyScoreEntry = _ => {
+    return <td>  </td>;
+}
 
 const secToMMSS = timeInSecStr => { 
     const secs = parseInt(timeInSecStr,10);

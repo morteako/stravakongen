@@ -1,7 +1,7 @@
 import React from "react";
 import { useStoreState } from "easy-peasy";
 import Table from 'react-bootstrap/Table';
-import ScoreEntry from "./ScoreEntry";
+import {createScoreEntry} from "./ScoreEntry";
 
 const Scoreboard = props => {
     const allTime = useStoreState( state => state.leaderboards.all );
@@ -13,10 +13,12 @@ const Scoreboard = props => {
             <td> 
                 {athlete_name}
             </td>
-            {Object.values(athleteRecord).map( x => <ScoreEntry {...x} />)}
+            {segments.map( seg => createScoreEntry(athleteRecord[seg]))}
         </tr>
     );
     const dataRows = Object.entries(allTime).map(createRow);
+    console.log(segments,dataRows);
+    // const dataRows = segments.map(seg => seg.id).map(createRow);
 
     return (
         <>  
