@@ -1,9 +1,10 @@
 import React from 'react';
 import Page from './Page';
 import { StoreProvider, createStore, action } from 'easy-peasy';
-import { runningSegments } from './data/segments';
+import { runningSegments, allSegments } from './data/segments';
 
 const store = createStore({
+  activityType : "cycling",
   leaderboards : {
     all:{},
     year:{}
@@ -33,7 +34,7 @@ const store = createStore({
 function App() {
   return (
     <StoreProvider store={store}>
-      <Page segments={runningSegments}/>
+      <Page segments={allSegments}/>
     </StoreProvider>
   );
 }
