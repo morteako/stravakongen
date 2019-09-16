@@ -29,8 +29,11 @@ export const createSegmentLeaderboard =
 export const createSegmentLeaderboardBekk = 
     id => addParam(addToStrava("segments",id,"leaderboard"),"club_id",clubs.bekk)
 
+export const createSegmentLeaderboardBekkFull = 
+    id => addParam(createSegmentLeaderboardBekk(id),"per_page",50);
+
 
 export const createSegmentLeaderboardBekkThisYear = 
-    id => addParam(createSegmentLeaderboardBekk(id),"date_range","this_year")
+    id => addParam(createSegmentLeaderboardBekk(id),"date_range","this_year");
 
 export const identity = x => x;
