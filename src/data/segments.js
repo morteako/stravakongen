@@ -1,15 +1,15 @@
 
 
 export const cyclingSegments = {
-    tryvann :  {
+    1942901 :  {
         id: 1942901,
         name: "Tryvann"
     },
-    voksenskog: {
+    4252879: {
         id: 4252879,
         name: "Olaf Bulls vei"
     },
-    grefsenkollen: {
+    660072: {
         id: 660072,
         name: "Grefsenkollen"
     }

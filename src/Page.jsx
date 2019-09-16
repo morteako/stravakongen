@@ -14,19 +14,22 @@ const nextUrlFunctions = {
 
 
 function Page() {
-
     
     const [urlFuncKey,setUrlFuncKey] = React.useState("all")
 
     const setNext = () => setUrlFuncKey(nextUrlFunctions[urlFuncKey])
+    
+    const createSegmentBoard = seg => 
+      <SegmentBoard dateRange={urlFuncKey} segment={seg} />
+    
+
   return (
     <div>   
       <Button  onClick={setNext}>{urlFuncKey} </Button>
       
       <Scoreboard />
-      <SegmentBoard dateRange={urlFuncKey} segment={cyclingSegments.tryvann} />
-      <SegmentBoard dateRange={urlFuncKey} segment={cyclingSegments.voksenskog}/>
-      <SegmentBoard dateRange={urlFuncKey} segment={cyclingSegments.grefsenkollen}/>
+      
+      {Object.values(cyclingSegments).map(createSegmentBoard)}
     </div>
   );
 }

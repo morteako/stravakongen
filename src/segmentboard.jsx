@@ -1,17 +1,16 @@
 import React, { useState, useEffect} from "react";
 import * as Api from "./api";
-import Leaderboard from "./leaderboard";
 import { useStoreActions } from "easy-peasy";
 
 
 const urlFunctions = {
-  "all" : Api.createSegmentLeaderboardBekk,
+  "all" : Api.createSegmentLeaderboardBekkFull,
   "year": Api.createSegmentLeaderboardBekkThisYear
 }
 
 
 const SegmentBoard = props => {
-    const [entries,setEntries] = useState([])
+    // const [entries,setEntries] = useState([])
     const [payload,setPayload] = useState(null)
     const segment = props.segment;
 
@@ -21,10 +20,10 @@ const SegmentBoard = props => {
       Api.getRequest(req).then( 
         x => { 
             console.log(x);
-            setEntries(x.data.entries);
+            // setEntries(x.data.entries);
             setPayload ({
-              id:segment.id,
-              dateRange:props.dateRange,
+              id          : segment.id,
+              dateRange   : props.dateRange,
               leaderboard : x.data.entries
             });
           })
@@ -38,10 +37,7 @@ const SegmentBoard = props => {
     console.log("payload",payload);
     return (
         <>
-            <Leaderboard 
-              entries={entries}
-              name={segment.name} 
-            />
+
         </>
     )
 } 
