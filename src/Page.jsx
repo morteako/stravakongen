@@ -17,7 +17,7 @@ const nextActivityType = {
 
 
 const Page = props => {
-    // const _activityType = useStoreState( state => state.activityType );
+    
     const [urlFuncKey,setUrlFuncKey] = React.useState("all");
     const [activityType,setActivityType] = React.useState("cycling");
 
@@ -28,11 +28,11 @@ const Page = props => {
       <SegmentBoard key={ind} dateRange={urlFuncKey} segment={seg} activityType={activityType}/>
     
     const currentSegments = Object.values(props.segments).filter(seg => seg.activityType === activityType);
-    // console.log("curr",currentSegments,activityType);
+    
   return (
     <div>   
-      <Button  onClick={switchDateRange}>{urlFuncKey} </Button>
-      <Button  onClick={switchActivity}>{activityType} </Button>
+      <Button onClick={switchDateRange}>{urlFuncKey} </Button>
+      <Button onClick={switchActivity}>{activityType} </Button>
       
       <Scoreboard segments={currentSegments}/>
       
