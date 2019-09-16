@@ -6,26 +6,28 @@ import { allSegments } from "./data/segments";
 
 const Scoreboard = props => {
     const allTime = useStoreState( state => state.leaderboards.all );
-    const segments = useStoreState( state => state.segments );
+    // const segments = useStoreState( state => state.segments );
 
     const segmentUrl = "https://www.strava.com/segments/";
+    
     const createSegmentLink = seg => (
-        <th> 
-            <a href={segmentUrl + seg}> 
-                {allSegments[seg].name} 
+        <th key={seg.id}> 
+            <a href={segmentUrl + seg.id} > 
+                {allSegments[seg.id].name} 
             </a> 
         </th>
     );
-    // const _segmentRow = segments.map(seg => <th>{seg}</th>);
-    const segmentRow = Array.from(segments).map(createSegmentLink);
+        
+
+    const segmentRow = props.segments.map(createSegmentLink);
     
 
-    const createRow = ([athlete_name,athleteRecord]) => (
-        <tr> 
+    const createRow = ([athlete_name,athleteRecord],ind) => (
+        <tr key={athlete_name}> 
             <td> 
                 {athlete_name}
             </td>
-            {Array.from(segments).map( seg => createScoreEntry(athleteRecord[seg]))}
+            {Array.from(props.segments).map( (seg,ind) => createScoreEntry(athleteRecord[seg.id],ind))}
         </tr>
     );
     const dataRows = Object.entries(allTime).map(createRow);

@@ -1,9 +1,7 @@
 import React from 'react';
 import SegmentBoard from './segmentboard';
-// import {cyclingSegments} from './data/segments';
 import Scoreboard from './scoreboard';
 import Button from 'react-bootstrap/Button';
-
 
 
 const nextUrlFunctions = {
@@ -19,25 +17,26 @@ const nextActivityType = {
 
 
 const Page = props => {
-    
-    const [urlFuncKey,setUrlFuncKey] = React.useState("all")
-    const [activityType,setActivityType] = React.useState("running")
+    // const _activityType = useStoreState( state => state.activityType );
+    const [urlFuncKey,setUrlFuncKey] = React.useState("all");
+    const [activityType,setActivityType] = React.useState("cycling");
 
-    const setNext = () => setUrlFuncKey(nextUrlFunctions[urlFuncKey])
-    const switchActivity = () => setActivityType(nextActivityType[activityType])
+    const switchDateRange = () => setUrlFuncKey(nextUrlFunctions[urlFuncKey])
+    const switchActivity  = () => setActivityType(nextActivityType[activityType])
     
-    const createSegmentBoard = seg => 
-      <SegmentBoard dateRange={urlFuncKey} segment={seg} />
+    const createSegmentBoard = (seg,ind) => 
+      <SegmentBoard key={ind} dateRange={urlFuncKey} segment={seg} activityType={activityType}/>
     
-
+    const currentSegments = Object.values(props.segments).filter(seg => seg.activityType === activityType);
+    // console.log("curr",currentSegments,activityType);
   return (
     <div>   
-      <Button  onClick={setNext}>{urlFuncKey} </Button>
+      <Button  onClick={switchDateRange}>{urlFuncKey} </Button>
       <Button  onClick={switchActivity}>{activityType} </Button>
       
-      <Scoreboard />
+      <Scoreboard segments={currentSegments}/>
       
-      {Object.values(props.segments).map(createSegmentBoard)}
+      {currentSegments.map(createSegmentBoard)}
     </div>
   );
 }
