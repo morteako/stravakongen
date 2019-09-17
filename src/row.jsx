@@ -6,7 +6,7 @@ import {createScoreEntry} from "./ScoreEntry";
 const Row = props => {
     const [athleteName,ranks,athleteRecord,segments,ind] = props.args;
     return (
-        <tr key={athleteName}> 
+        <tr> 
             <td> 
                 {athleteName} 
                 {" "}

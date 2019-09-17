@@ -34,13 +34,13 @@ const Page = props => {
     const currentSegments = Object.values(props.segments).filter(segFilter);
     
     const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map( ([k,v]) => (
-      <Dropdown.Item className={styles.dropdown_item} onClick={_ => setDateRange(k)}>
+      <Dropdown.Item key={k} className={styles.dropdown_item} onClick={_ => setDateRange(k)}>
         {v}
       </Dropdown.Item>
     ));
   
     const activityTypeDropdownItems = Object.entries(activityTypeTitle).map( ([k,v]) => (
-      <Dropdown.Item className={styles.dropdown_item} onClick={_ => setActivityType(k)}>
+      <Dropdown.Item key={k} className={styles.dropdown_item} onClick={_ => setActivityType(k)}>
         {v}
       </Dropdown.Item>
     ));

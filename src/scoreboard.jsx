@@ -34,7 +34,7 @@ const Scoreboard = props => {
     
     
     const dataRows = ranking.map((o,ind) =>  
-        <Row args={[o.athleteName,o.ranks,allTime[o.athleteName],segments,ind]} />
+        <Row key={o.athleteName} args={[o.athleteName,o.ranks,allTime[o.athleteName],segments,ind]} />
     );
        
     
