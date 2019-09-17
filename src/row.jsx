@@ -8,7 +8,11 @@ const Row = props => {
     return (
         <tr key={athleteName}> 
             <td> 
-                {athleteName}
+                {athleteName} 
+                {" "}
+                {ind === 0 && "🥇" }
+                {ind === 1 && "🥈" }
+                {ind === 2 && "🥉" }
             </td>
             <td >
                 <text className={styles.ranktext_rank} >
