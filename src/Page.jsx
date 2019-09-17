@@ -10,11 +10,22 @@ const nextDateRange = {
 };
 
 const nextActivityType = {
-  "running" : "cycling",
-  "cycling" : "running"
+  "cycling" : "running",
+  "running" : "both",
+  "both":"cycling"
 };
 
+const activityTypeEmojis = {
+  "cycling" : "🚴🏼‍♂️",
+  "running" : "🏃🏻‍♂️",
+  "both":"🚴🏼‍♂️ " + "🏃🏻‍♂️"
+};
 
+const activityFilters = {
+  "cycling" : x => x.activityType === "cycling",
+  "running" : x => x.activityType === "running",
+  "both": x => true
+}
 
 const Page = props => {
     
@@ -27,12 +38,14 @@ const Page = props => {
     const createSegmentBoard = (seg,ind) => 
       <SegmentBoard key={ind} dateRange={dateRange} segment={seg} activityType={activityType}/>
     
-    const currentSegments = Object.values(props.segments).filter(seg => seg.activityType === activityType);
+    const segFilter = activityFilters[activityType];
+    const currentSegments = Object.values(props.segments).filter(segFilter);
     
+    const activityEmoji = activityTypeEmojis[activityType];
   return (
     <div>   
       <Button onClick={switchDateRange}>{dateRange} </Button>
-      <Button onClick={switchActivity}>{activityType} </Button>
+      <Button onClick={switchActivity}>{activityType + " " + activityEmoji} </Button>
       
       <Scoreboard segments={currentSegments} dateRange={dateRange}/>
       

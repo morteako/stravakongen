@@ -1,0 +1,19 @@
+.entry_first {
+  background-color: gold;
+  opacity: 0.8;
+}
+
+.entry_second {
+    background-color: silver;
+    opacity: 0.8;
+}
+
+.entry_third {
+    background-color: #cd7f32;
+    opacity: 0.7;
+}
+
+.entry_normal {
+    opacity: 1;
+}
+

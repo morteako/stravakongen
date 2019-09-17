@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./mystyle.module.css";
 
 export const createScoreEntry = (data,ind) => 
     data ? <ScoreEntry key={ind} {...data}/> : <EmptyScoreEntry key={ind}/>;
@@ -19,8 +19,16 @@ const ScoreEntry = props => {
     const date = start_date_local.substr(0,10).split("-").reverse().join(".");
     const elapsedTimeInSeconds = secToMMSS(elapsed_time);
     const text = `${elapsedTimeInSeconds} (#${rank})`;
+
+    const entryClasses = {
+        1:styles.entry_first,
+        2:styles.entry_second,
+        3:styles.entry_third
+    };
+    const className = entryClasses[rank] || styles.entry_normal;
+
     return (
-        <td> {text} </td>
+        <td className={className}> {text} </td>
     )
 };
 

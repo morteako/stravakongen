@@ -38,6 +38,9 @@ export const runningSegments = {
     }
 };
 
+
+
+
 // const addActivityType = activityType => obj => {
 //     return {...obj, ...{activityType : activityType}}
 // }
