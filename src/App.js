@@ -1,30 +1,35 @@
 import React from 'react';
 import Page from './Page';
 import { StoreProvider, createStore, action } from 'easy-peasy';
-import { runningSegments, allSegments } from './data/segments';
+import { allSegments } from './data/segments';
 
 const store = createStore({
-  activityType : "cycling",
-  leaderboards : {
+  athleteEfforts : {
     all:{},
     year:{}
   },
-  segments : new Set([]),
+
+  segmentLeaderboards: {
+    all:{},
+    year:{}
+  },
+  
   addLeaderboard : action((state, payload) => {
     if (!payload) return;
 
-    const segment = payload.id;
+    const segmentId = payload.id;
+    state.segmentLeaderboards[payload.dateRange][segmentId] = payload.leaderboard;
 
     const addEntry = entry => {
-      entry.segment = segment;
+      entry.segment = segmentId;
 
-      const curEntries = state.leaderboards[payload.dateRange][entry.athlete_name] || {};
+      const curEntries = state.athleteEfforts[payload.dateRange][entry.athlete_name] || {};
       curEntries[entry.segment] = entry;
-      state.leaderboards[payload.dateRange][entry.athlete_name] = curEntries;
+      state.athleteEfforts[payload.dateRange][entry.athlete_name] = curEntries;
     }
-    payload.leaderboard.map( addEntry );
+    payload.leaderboard.forEach( addEntry );
 
-    state.segments.add(segment);
+    
   })
 
   

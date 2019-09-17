@@ -10,8 +10,7 @@ const urlFunctions = {
 
 
 const SegmentBoard = props => {
-  // console.log("props",props);
-    // const [entries,setEntries] = useState([])
+
     const [payload,setPayload] = useState(null)
     const segment = props.segment;
 

@@ -3,10 +3,15 @@ import { useStoreState } from "easy-peasy";
 import Table from 'react-bootstrap/Table';
 import {createScoreEntry} from "./ScoreEntry";
 import { allSegments } from "./data/segments";
+import getRanking from "./ranking";
 
 const Scoreboard = props => {
-    const allTime = useStoreState( state => state.leaderboards.all );
-    // const segments = useStoreState( state => state.segments );
+    // const allTime = useStoreState( state => state.athleteEfforts.all );
+    // const leaderboardsAllTime = useStoreState( state => state.segmentLeaderboards.all );
+    const state = useStoreState( state => state);
+    const allTime = state.athleteEfforts.all;
+    const leaderboardsAllTime = state.segmentLeaderboards.all;
+    
 
     const segmentUrl = "https://www.strava.com/segments/";
     
@@ -21,17 +26,24 @@ const Scoreboard = props => {
 
     const segmentRow = props.segments.map(createSegmentLink);
     
+    const ranking = getRanking(allTime, props.segments,leaderboardsAllTime);
+    
+    console.log("ranking",ranking);
 
-    const createRow = ([athlete_name,athleteRecord],ind) => (
-        <tr key={athlete_name}> 
+    const createRow = ({athleteName,ranks},athleteRecord,ind) => (
+        <tr key={athleteName}> 
             <td> 
-                {athlete_name}
+                {athleteName}
             </td>
-            {Array.from(props.segments).map( (seg,ind) => createScoreEntry(athleteRecord[seg.id],ind))}
+            <td>
+               {`${ind+1} (${ranks})`}
+            </td>
+            {Array.from(props.segments).map( (seg,ind) => 
+                createScoreEntry(athleteRecord[seg.id],ind))}
         </tr>
     );
-    const dataRows = Object.entries(allTime).map(createRow);
-    
+    // const dataRows = ranking.map(o => createRow(o, allTime[o.athleteName]) Object.entries(allTime).map(createRow);
+    const dataRows = ranking.map((o,ind) => createRow(o, allTime[o.athleteName],ind));
     
 
     return (
@@ -40,6 +52,7 @@ const Scoreboard = props => {
                 <thead>
                     <tr>
                         <th>Navn</th>
+                        <th>#</th>
                         {segmentRow}                    
                 
                     </tr>
@@ -48,7 +61,6 @@ const Scoreboard = props => {
                     {dataRows}
                 </tbody>
             </Table>
-            {JSON.stringify(allTime)}
         </>
     );
 } 
