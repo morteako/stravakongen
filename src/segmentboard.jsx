@@ -10,6 +10,7 @@ const urlFunctions = {
 
 
 const SegmentBoard = props => {
+  // console.log("props",props);
     // const [entries,setEntries] = useState([])
     const [payload,setPayload] = useState(null)
     const segment = props.segment;
@@ -19,7 +20,7 @@ const SegmentBoard = props => {
       const req = leaderboardRequestCreator(segment.id);
       Api.getRequest(req).then( 
         x => { 
-            console.log(x);
+            // console.log(x);
             // setEntries(x.data.entries);
             setPayload ({
               id          : segment.id,
@@ -34,7 +35,7 @@ const SegmentBoard = props => {
 
     
     
-    console.log("payload",payload);
+    // console.log("payload",payload);
     return (
         <>
 
