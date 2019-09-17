@@ -4,7 +4,7 @@ import Scoreboard from './scoreboard';
 import Button from 'react-bootstrap/Button';
 
 
-const nextUrlFunctions = {
+const nextDateRange = {
     "all" : "year",
     "year" : "all"
 };
@@ -18,23 +18,23 @@ const nextActivityType = {
 
 const Page = props => {
     
-    const [urlFuncKey,setUrlFuncKey] = React.useState("all");
+    const [dateRange,setDateRange] = React.useState("all");
     const [activityType,setActivityType] = React.useState("cycling");
 
-    const switchDateRange = () => setUrlFuncKey(nextUrlFunctions[urlFuncKey])
+    const switchDateRange = () => setDateRange(nextDateRange[dateRange])
     const switchActivity  = () => setActivityType(nextActivityType[activityType])
     
     const createSegmentBoard = (seg,ind) => 
-      <SegmentBoard key={ind} dateRange={urlFuncKey} segment={seg} activityType={activityType}/>
+      <SegmentBoard key={ind} dateRange={dateRange} segment={seg} activityType={activityType}/>
     
     const currentSegments = Object.values(props.segments).filter(seg => seg.activityType === activityType);
     
   return (
     <div>   
-      <Button onClick={switchDateRange}>{urlFuncKey} </Button>
+      <Button onClick={switchDateRange}>{dateRange} </Button>
       <Button onClick={switchActivity}>{activityType} </Button>
       
-      <Scoreboard segments={currentSegments}/>
+      <Scoreboard segments={currentSegments} dateRange={dateRange}/>
       
       {currentSegments.map(createSegmentBoard)}
     </div>
