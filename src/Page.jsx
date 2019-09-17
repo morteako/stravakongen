@@ -34,7 +34,7 @@ const Page = props => {
     const currentSegments = Object.values(props.segments).filter(segFilter);
     
     const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map( ([k,v]) => (
-      <Dropdown.Item onClick={_ => setDateRange(k)}>
+      <Dropdown.Item className={styles.dropdown_item} onClick={_ => setDateRange(k)}>
         {v}
       </Dropdown.Item>
     ));
@@ -50,7 +50,6 @@ const Page = props => {
       <div className={styles.button_row}>
         <DropdownButton 
           className={styles.button} 
-          size="lg"
           title={"Periode : " + dateRangeTitle[dateRange]}
         >
           {dateRangeDropwdownItems}
@@ -58,15 +57,11 @@ const Page = props => {
         </DropdownButton>
         <DropdownButton 
           className={styles.button} 
-          size="lg"
           title={"Aktivitet : " + activityTypeTitle[activityType]}
         >
           {activityTypeDropdownItems}
 
         </DropdownButton>
-        {/* <Button className={styles.button} onClick={switchActivity} size="lg">
-          {activityType + " " + activityEmoji} 
-        </Button> */}
       </div>
       
       <Scoreboard segments={currentSegments} dateRange={dateRange}/>

@@ -1,9 +1,10 @@
 import React from "react";
 import { useStoreState } from "easy-peasy";
 import Table from 'react-bootstrap/Table';
-import {createScoreEntry} from "./ScoreEntry";
 import { allSegments } from "./data/segments";
 import getRanking from "./ranking";
+import styles from "./mystyle.module.css"
+import Row from "./row";
 
 const Scoreboard = props => {
     const {segments, dateRange} = props;
@@ -18,7 +19,7 @@ const Scoreboard = props => {
     
     const createSegmentLink = seg => (
         <th key={seg.id}> 
-            <a href={segmentUrl + seg.id} > 
+            <a className={styles.link} href={segmentUrl + seg.id} > 
                 {allSegments[seg.id].name} 
             </a> 
         </th>
@@ -30,20 +31,12 @@ const Scoreboard = props => {
     const ranking = getRanking(allTime, segments,leaderboardsAllTime);
     
 
-    const createRow = ({athleteName,ranks},athleteRecord,ind) => (
-        <tr key={athleteName}> 
-            <td> 
-                {athleteName}
-            </td>
-            <td>
-               {`${ind+1} (${ranks})`}
-            </td>
-            {Array.from(segments).map( (seg,ind) => 
-                createScoreEntry(athleteRecord[seg.id],ind))}
-        </tr>
-    );
     
-    const dataRows = ranking.map((o,ind) => createRow(o, allTime[o.athleteName],ind));
+    
+    const dataRows = ranking.map((o,ind) =>  
+        <Row args={[o.athleteName,o.ranks,allTime[o.athleteName],segments,ind]} />
+    );
+       
     
 
     return (
