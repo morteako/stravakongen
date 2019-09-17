@@ -1,4 +1,4 @@
-import { KeyObject } from "crypto";
+import * as L from 'partial.lenses';
 
 // const toObject = array => {
 //     array.reduce(
@@ -31,7 +31,31 @@ const getRanking = (allTime,segments,leaderboards) => {
     });
     const ranks = Object.entries(allTime).map(createRanks);
 
-    return ranks;
+    const addKeyVal = (obj,entry) => {
+        console.log(entry);
+        obj[entry.athleteName] = entry.ranks.reduce((a, b) => a + b, 0);
+        return obj;
+    }
+    const rankObj = ranks.reduce(addKeyVal,{});
+
+    // const summed = Array.of(
+    //     L.modify(L.compose(L.values,"ranks"), ranks => ranks.reduce((a, b) => a + b, 0), ranks)
+    // );
+    // console.log()
+    const summed = 
+        L.modify(L.compose(L.values,"ranks"), ranks => ranks.reduce((a, b) => a + b, 0), ranks);
+    
+    console.log("hei",ranks,Array.from(ranks),summed,
+        Object.entries(ranks).map(([key, value]) => value));
+
+    const summedArray = Object.entries(summed).map(([key, value]) => value);
+    console.log(summedArray);
+    // summed.sort( (a,b) => a.ranks - b.ranks);
+    const sorted = [...summedArray].sort((a,b) => a.ranks - b.ranks)
+    console.log(sorted);
+        
+
+    return sorted;
 }
 
 export default getRanking;

@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "easy-peasy": "^3.0.2",
     "immer": "^3.2.1",
+    "partial.lenses": "^14.17.0",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
