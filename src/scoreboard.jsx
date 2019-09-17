@@ -4,6 +4,9 @@ import Table from 'react-bootstrap/Table';
 import {createScoreEntry} from "./ScoreEntry";
 import { allSegments } from "./data/segments";
 import getRanking from "./ranking";
+import kom from './res/crown.png'
+import second from './res/2th.png'
+import third from './res/3.th.png'
 
 const Scoreboard = props => {
     const {segments, dateRange} = props;
@@ -32,11 +35,14 @@ const Scoreboard = props => {
 
     const createRow = ({athleteName,ranks},athleteRecord,ind) => (
         <tr key={athleteName}> 
-            <td> 
+            <td>
                 {athleteName}
+                {ind === 0 && <img src={kom} alt="logo" width="40px" height="28px"/> }
+                {ind === 1 && <img src={second} alt="logo" width="40px" height="28px"/> }
+                {ind === 2 && <img src={third} alt="logo" width="40px" height="28px"/> }
             </td>
             <td>
-               {`${ind+1} (${ranks})`}
+                    {`${ind+1} (${ranks})`}
             </td>
             {Array.from(segments).map( (seg,ind) => 
                 createScoreEntry(athleteRecord[seg.id],ind))}
