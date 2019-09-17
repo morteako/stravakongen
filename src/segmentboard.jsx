@@ -19,8 +19,6 @@ const SegmentBoard = props => {
       const req = leaderboardRequestCreator(segment.id);
       Api.getRequest(req).then( 
         x => { 
-            // console.log(x);
-            // setEntries(x.data.entries);
             setPayload ({
               id          : segment.id,
               dateRange   : props.dateRange,
@@ -34,7 +32,6 @@ const SegmentBoard = props => {
 
     
     
-    // console.log("payload",payload);
     return (
         <>
 
