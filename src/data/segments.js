@@ -20,10 +20,6 @@ export const runningSegments = {
         id: 2783427,
         name: "Sognsvann motsols, strand til strand"
     },
-    // 10250744: {
-    //     id:10250744,
-    //     name:"Official Oslos Bratteste Downhill"
-    // },
     10100312: {
         id:10100312,
         name:"Sognsvann-Ullevålseter"
@@ -37,13 +33,6 @@ export const runningSegments = {
         name:"Vettakollen opp langs eggen 2"
     }
 };
-
-
-
-
-// const addActivityType = activityType => obj => {
-//     return {...obj, ...{activityType : activityType}}
-// }
 
 
 Object.values(runningSegments).forEach( x => x.activityType = "running");

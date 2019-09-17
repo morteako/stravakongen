@@ -17,3 +17,14 @@
     opacity: 1;
 }
 
+.button_row {
+    position: relative;
+    text-align: center
+}
+
+.button {
+    text-transform: capitalize;
+    padding : 1em;
+    margin : 0.5em;
+}
+
