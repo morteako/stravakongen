@@ -16,9 +16,6 @@ const dateRangeTitle = {
   "year": "I år"
 }
 
-
-
-
 const activityFilters = {
   "cycling" : x => x.activityType === "cycling",
   "running" : x => x.activityType === "running",
@@ -36,7 +33,6 @@ const Page = props => {
     const segFilter = activityFilters[activityType];
     const currentSegments = Object.values(props.segments).filter(segFilter);
     
-
     const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map( ([k,v]) => (
       <Dropdown.Item onClick={_ => setDateRange(k)}>
         {v}
