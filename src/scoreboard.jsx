@@ -47,21 +47,18 @@ const Scoreboard = props => {
     
 
     return (
-        <>  
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Navn</th>
-                        <th>#</th>
-                        {segmentRow}                    
-                
-                    </tr>
-                </thead>
-                <tbody>
-                    {dataRows}
-                </tbody>
-            </Table>
-        </>
+        <Table striped bordered hover>
+            <thead>
+                <tr>
+                    <th>Navn</th>
+                    <th>#</th>
+                    {segmentRow}            
+                </tr>
+            </thead>
+            <tbody>
+                {dataRows}
+            </tbody>
+        </Table>
     );
 } 
 
