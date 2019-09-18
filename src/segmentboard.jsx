@@ -8,14 +8,9 @@ const urlFunctions = {
   "year": Api.createSegmentLeaderboardBekkThisYear
 }
 
-
 // const leaderboardRequestCreator = urlFunctions[props.dateRange]
 
-
 // useStoreActions(actions => actions.addLeaderboard)(payload)
-
-
-
 
 const SegmentBoard = props => {
 

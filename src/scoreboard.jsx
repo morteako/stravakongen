@@ -1,7 +1,6 @@
 import React from "react";
 import { useStoreState } from "easy-peasy";
 import Table from 'react-bootstrap/Table';
-import { allSegments } from "./data/segments";
 import getRanking from "./ranking";
 import Row from "./row";
 import SegmentLink from "./segmentLink";
