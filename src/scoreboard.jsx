@@ -3,9 +3,9 @@ import { useStoreState } from "easy-peasy";
 import Table from 'react-bootstrap/Table';
 import { allSegments } from "./data/segments";
 import getRanking from "./ranking";
-import styles from "./mystyle.module.css"
 import Row from "./row";
 import SegmentLink from "./segmentLink";
+import styles from "./mystyle.module.css"
 
 
 const Scoreboard = props => {
@@ -16,24 +16,22 @@ const Scoreboard = props => {
     const allTime = state.athleteEfforts[dateRange];
     const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
     
-
-    
-        
-
-    const segmentRow = segments.map(seg => 
-        <SegmentLink key={seg.id} segmentId={seg.id} segmentName={allSegments[seg.id].name}/>
+    const segmentRow = segments.map(seg => {
+        const numEfforts = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";
+        return (<SegmentLink 
+            key={seg.id}
+            segmentId={seg.id}
+            segmentName={allSegments[seg.id].name}
+            numEfforts={numEfforts}
+        />);
+        }
     );
     
     const ranking = getRanking(allTime, segments,leaderboardsAllTime);
     
-
-    
-    
     const dataRows = ranking.map(({athleteName,ranks,rankPos},ind) =>  
         <Row key={athleteName} args={[athleteName,ranks,allTime[athleteName],segments,rankPos]} />
     );
-       
-    
 
     return (
         <Table striped bordered hover>
