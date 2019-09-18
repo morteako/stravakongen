@@ -9,8 +9,17 @@ const urlFunctions = {
 }
 
 
+// const leaderboardRequestCreator = urlFunctions[props.dateRange]
+
+
+// useStoreActions(actions => actions.addLeaderboard)(payload)
+
+
+
+
 const SegmentBoard = props => {
 
+    const [segmentPayload,setSegmentPayload] = useState(null)
     const [payload,setPayload] = useState(null)
     const segment = props.segment;
 
@@ -27,16 +36,21 @@ const SegmentBoard = props => {
           })
       }, [segment.id,props.dateRange])
       
-      useStoreActions(actions => actions.addLeaderboard)(payload)
+      useStoreActions(actions => actions.addLeaderboard)(payload);
     
+      useEffect( () => {
+        const segReq = Api.createSegment(segment.id);
+      
+        Api.getRequest(segReq).then( 
+          x => { 
+            setSegmentPayload(x.data);
+          }
+        );
+      },[segment.id]);
+      useStoreActions(actions => actions.addSegment)(segmentPayload);
 
-    
-    
-    return (
-        <>
-
-        </>
-    )
+      return null;
+      
 } 
 
 export default SegmentBoard;

@@ -12,17 +12,20 @@ const Scoreboard = props => {
     const {segments, dateRange} = props;
 
     const state = useStoreState( state => state);
-;
+
+    const storeSegments = state.segments;
     const allTime = state.athleteEfforts[dateRange];
     const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
     
     const segmentRow = segments.map(seg => {
-        const numEfforts = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";
+        const numAthletes = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";
         return (<SegmentLink 
             key={seg.id}
             segmentId={seg.id}
-            segmentName={allSegments[seg.id].name}
-            numEfforts={numEfforts}
+            numAthletes={numAthletes}
+            segmentName={seg.name}
+            distance={storeSegments[seg.id] && storeSegments[seg.id].distance}
+            averageGrade={storeSegments[seg.id] && storeSegments[seg.id].average_grade}
         />);
         }
     );
@@ -32,7 +35,6 @@ const Scoreboard = props => {
     const dataRows = ranking.map(({athleteName,ranks,rankPos},ind) =>  
         <Row key={athleteName} args={[athleteName,ranks,allTime[athleteName],segments,rankPos]} />
     );
-    console.log(leaderboardsAllTime);
 
     return (
         <Table striped bordered hover>

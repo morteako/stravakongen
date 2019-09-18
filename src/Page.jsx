@@ -1,5 +1,5 @@
 import React from 'react';
-import SegmentBoard from './segmentboard';
+import SegmentBoard, { fetchSegment } from './segmentboard';
 import Scoreboard from './scoreboard';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
