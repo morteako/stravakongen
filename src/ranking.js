@@ -7,7 +7,7 @@ const fixSharedPosition = rankings => {
     const grouped = Object.values(groupBy(indexed, x => x.ranks));
 
     const setNewRankPos = rankPos => obj => ({...obj, rankPos})
-    const fixedRankPos = grouped.map(group => group.map(setNewRankPos(group[0].rankPos))).flat();
+    const fixedRankPos = grouped.flatMap(group => group.map(setNewRankPos(group[0].rankPos)));
 
     return fixedRankPos;
 }
@@ -29,12 +29,14 @@ const getRanking = (allTime,segments,leaderboards) => {
     const ranks = Object.entries(allTime).map(createRanks);
 
 
-    const summed = 
-        L.modify(
-            L.compose(L.values,"ranks"), 
-            xs => xs.reduce((a, b) => a + b, 0),
-            ranks
-        );
+    const summed = L.modify(
+        L.compose(L.values,"ranks"), 
+        xs => xs.reduce((a, b) => a + b, 0),
+        ranks
+    );
+
+
+    
 
     const summedArray = Object.entries(summed).map(([key, value]) => value);
     const sorted = [...summedArray].sort((a,b) => a.ranks - b.ranks)
