@@ -22,8 +22,9 @@ const activityFilters = {
   "both"    : _ => true
 }
 
+
 const Page = props => {
-    
+
     const [dateRange,setDateRange] = React.useState("all");
     const [activityType,setActivityType] = React.useState("cycling");
 

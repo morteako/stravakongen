@@ -10,7 +10,6 @@ export const getRequest = url =>
         }
     });
 
-
 // const addBekk = url => `${url}?club_id=${clubs.bekk}`  
 // const addThisYear = url => `${url}?date_range=this_year`  
 

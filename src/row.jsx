@@ -8,19 +8,19 @@ const Row = props => {
     return (
         <tr> 
             <td> 
-                {athleteName} 
+                <b>{athleteName}</b>
                 {" "}
                 {rankPos === 0 && "🥇" }
                 {rankPos === 1 && "🥈" }
                 {rankPos === 2 && "🥉" }
             </td>
             <td className={styles.ranktext_header}>
-                <tull className={styles.ranktext_rank} >
+                <span className={styles.ranktext_rank} >
                     {rankPos+1}
-                </tull>
-                <tull className={styles.ranktext_score}>
+                </span>
+                <span className={styles.ranktext_score}>
                     {` (${ranks})`}
-                </tull>
+                </span>
             </td>
             {Array.from(segments).map( (seg,ind) => 
                 createScoreEntry(athleteRecord[seg.id],ind))}
