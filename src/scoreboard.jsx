@@ -5,6 +5,8 @@ import { allSegments } from "./data/segments";
 import getRanking from "./ranking";
 import styles from "./mystyle.module.css"
 import Row from "./row";
+import SegmentLink from "./segmentLink";
+
 
 const Scoreboard = props => {
     const {segments, dateRange} = props;
@@ -15,26 +17,20 @@ const Scoreboard = props => {
     const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
     
 
-    const segmentUrl = "https://www.strava.com/segments/";
     
-    const createSegmentLink = seg => (
-        <th key={seg.id}> 
-            <a className={styles.link} href={segmentUrl + seg.id} > 
-                {allSegments[seg.id].name} 
-            </a> 
-        </th>
-    );
         
 
-    const segmentRow = segments.map(createSegmentLink);
+    const segmentRow = segments.map(seg => 
+        <SegmentLink key={seg.id} segmentId={seg.id} segmentName={allSegments[seg.id].name}/>
+    );
     
     const ranking = getRanking(allTime, segments,leaderboardsAllTime);
     
 
     
     
-    const dataRows = ranking.map((o,ind) =>  
-        <Row key={o.athleteName} args={[o.athleteName,o.ranks,allTime[o.athleteName],segments,ind]} />
+    const dataRows = ranking.map(({athleteName,ranks},ind) =>  
+        <Row key={athleteName} args={[athleteName,ranks,allTime[athleteName],segments,ind]} />
     );
        
     
@@ -43,8 +39,8 @@ const Scoreboard = props => {
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>Navn</th>
-                    <th>#</th>
+                    <th className={styles.header}>Navn</th>
+                    <th className={styles.header}>#</th>
                     {segmentRow}            
                 </tr>
             </thead>

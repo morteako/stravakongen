@@ -36,7 +36,17 @@ const store = createStore({
   
 });
 
+const zoomOutMobile = () => {
+  const viewport = document.querySelector('meta[name="viewport"]');
+
+  if ( viewport ) {
+    viewport.content = 'initial-scale=1';
+    viewport.content = 'width=device-width';
+  }
+}
+
 function App() {
+  zoomOutMobile();
   return (
     <StoreProvider store={store}>
       <Page segments={allSegments}/>

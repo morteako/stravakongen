@@ -14,13 +14,13 @@ const Row = props => {
                 {ind === 1 && "🥈" }
                 {ind === 2 && "🥉" }
             </td>
-            <td >
-                <text className={styles.ranktext_rank} >
+            <td className={styles.ranktext_header}>
+                <tull className={styles.ranktext_rank} >
                     {ind+1}
-                </text>
-                <text className={styles.ranktext_score}>
+                </tull>
+                <tull className={styles.ranktext_score}>
                     {` (${ranks})`}
-                </text>
+                </tull>
             </td>
             {Array.from(segments).map( (seg,ind) => 
                 createScoreEntry(athleteRecord[seg.id],ind))}

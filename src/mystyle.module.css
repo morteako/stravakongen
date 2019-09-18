@@ -36,17 +36,24 @@
 /* .dropdown_item {
     min-width: 3em;
 } */
+.ranktext_td {
+    white-space:nowrap;
+    display:inline-block;
+}
 
 .ranktext_rank {
     font-weight: bold;
+    white-space:nowrap;
+    display:inline-block;
 }
 
 .ranktext_score {
+    white-space:nowrap;
     font-weight: normal;
     opacity: 0.7;
 }
 
-.link {
+.header {
     color : #fc4c02;
 }
 
