@@ -4,19 +4,19 @@ import styles from "./mystyle.module.css";
 import {createScoreEntry} from "./ScoreEntry";
 
 const Row = props => {
-    const [athleteName,ranks,athleteRecord,segments,ind] = props.args;
+    const [athleteName,ranks,athleteRecord,segments,rankPos] = props.args;
     return (
         <tr> 
             <td> 
                 {athleteName} 
                 {" "}
-                {ind === 0 && "🥇" }
-                {ind === 1 && "🥈" }
-                {ind === 2 && "🥉" }
+                {rankPos === 0 && "🥇" }
+                {rankPos === 1 && "🥈" }
+                {rankPos === 2 && "🥉" }
             </td>
             <td className={styles.ranktext_header}>
                 <tull className={styles.ranktext_rank} >
-                    {ind+1}
+                    {rankPos+1}
                 </tull>
                 <tull className={styles.ranktext_score}>
                     {` (${ranks})`}

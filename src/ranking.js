@@ -1,5 +1,16 @@
 import * as L from 'partial.lenses';
+import {groupBy} from "lodash";
 
+const fixSharedPosition = rankings => {
+    const indexed = rankings.map( (obj,ind) => ({...obj,rankPos:ind} ));
+
+    const grouped = Object.values(groupBy(indexed, x => x.ranks));
+
+    const setNewRankPos = rankPos => obj => ({...obj, rankPos})
+    const fixedRankPos = grouped.map(group => group.map(setNewRankPos(group[0].rankPos))).flat();
+
+    return fixedRankPos;
+}
 
 const getRanking = (allTime,segments,leaderboards) => {
 
@@ -24,7 +35,6 @@ const getRanking = (allTime,segments,leaderboards) => {
             xs => xs.reduce((a, b) => a + b, 0),
             ranks
         );
-    
 
     const summedArray = Object.entries(summed).map(([key, value]) => value);
     const sorted = [...summedArray].sort((a,b) => a.ranks - b.ranks)
@@ -35,7 +45,8 @@ const getRanking = (allTime,segments,leaderboards) => {
                 .reduce((a, b) => a + b, 0);
 
     const onlyWithEfforts = sorted.filter(x => x.ranks !== noEffortsScore);
-    return onlyWithEfforts;
+
+    return fixSharedPosition(onlyWithEfforts);
 }
 
 export default getRanking;
