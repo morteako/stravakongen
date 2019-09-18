@@ -4,9 +4,12 @@ import styles from "./mystyle.module.css";
 import {createScoreEntry} from "./ScoreEntry";
 
 const Row = props => {
+    const [clicked, setClicked] = React.useState(false);
+
     const [athleteName,ranks,athleteRecord,segments,rankPos] = props.args;
+
     return (
-        <tr> 
+        <tr onClick={() => setClicked(!clicked)}> 
             <td> 
                 <b>{athleteName}</b>
                 {" "}
@@ -23,7 +26,7 @@ const Row = props => {
                 </span>
             </td>
             {Array.from(segments).map( (seg,ind) => 
-                createScoreEntry(athleteRecord[seg.id],ind))}
+                createScoreEntry(athleteRecord[seg.id],clicked,ind))}
         </tr>
     );
 };
