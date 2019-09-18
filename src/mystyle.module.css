@@ -46,5 +46,9 @@
 
 .header {
     color : #fc4c02;
+    /* text-align: center; */
 }
 
+.th {
+    text-align: center;
+}
