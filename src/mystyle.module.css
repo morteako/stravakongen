@@ -18,37 +18,28 @@
 }
 
 .button_row {
-    /* position: relative;
-    text-align: center; */
     display: flex;
     flex-wrap:wrap;
     justify-content: center;
 }
 
 .button {
-    /* text-transform: capitalize; */
     color: #fc4c02;
     background-color: #fc4c02;
     margin : 0.1em;
 }
 
 
-/* .dropdown_item {
-    min-width: 3em;
-} */
+
 .ranktext_td {
-    white-space:nowrap;
     display:inline-block;
 }
 
 .ranktext_rank {
     font-weight: bold;
-    white-space:nowrap;
-    display:inline-block;
 }
 
 .ranktext_score {
-    white-space:nowrap;
     font-weight: normal;
     opacity: 0.7;
 }
