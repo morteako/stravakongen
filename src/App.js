@@ -1,7 +1,7 @@
 import React from 'react';
 import Page from './Page';
 import { StoreProvider, createStore, action } from 'easy-peasy';
-import { allSegments } from './data/segments';
+
 
 const store = createStore({
   athleteEfforts : {
@@ -52,7 +52,7 @@ function App() {
   zoomOutMobile();
   return (
     <StoreProvider store={store}>
-      <Page segments={allSegments}/>
+      <Page/>
     </StoreProvider>
   );
 }
