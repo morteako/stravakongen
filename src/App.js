@@ -34,12 +34,9 @@ const store = createStore({
       state.athleteEfforts[payload.dateRange][entry.athlete_name] = curEntries;
     }
     payload.leaderboard.forEach( addEntry );
-
     
   })
 
-  
-  
 });
 
 const zoomOutMobile = () => {
