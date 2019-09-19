@@ -6,6 +6,7 @@ import Row from "./row";
 import SegmentLink from "./segmentLink";
 import styles from "./mystyle.module.css"
 import findNewestPr from "./findNewestPr";
+import HeaderRow from "./HeaderRow";
 
 
 const Scoreboard = props => {
@@ -19,7 +20,7 @@ const Scoreboard = props => {
     
     const newestPrDate = findNewestPr(leaderboardsAllTime);
 
-    const segmentRow = segments.map(seg => {
+    const segmentRowMapper = clicked => segments.map(seg => {
         const numAthletes = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";
         return (<SegmentLink 
             key={seg.id}
@@ -28,6 +29,7 @@ const Scoreboard = props => {
             segmentName={seg.name}
             distance={storeSegments[seg.id] && storeSegments[seg.id].distance}
             averageGrade={storeSegments[seg.id] && storeSegments[seg.id].average_grade}
+            clicked={clicked}
         />);
         }
     );
@@ -41,15 +43,7 @@ const Scoreboard = props => {
     return (
         <Table striped bordered hover>
             <thead>
-                <tr>
-                    <th className={styles.header}>Navn</th>
-                    <th className={styles.header}>
-                        #
-                        {" "}
-                        <span className={styles.scores}>(Poeng)</span>
-                    </th>
-                    {segmentRow}      
-                </tr>
+               <HeaderRow segmentRowMapper={segmentRowMapper}/>
             </thead>
             <tbody>
                 {dataRows}
