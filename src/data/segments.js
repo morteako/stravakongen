@@ -57,9 +57,9 @@ export const allSegments = {
             "AllRoundern":1,
         }
     },
-    5102820 : {
-        id:5102820,
-        name:"Holmenkollveien",
+    8281150 : {
+        id:8281150,
+        name:"Tryvann (løp)",
         groups: {
             "Tryvanndobbelen":1,
         },
