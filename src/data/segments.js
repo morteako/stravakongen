@@ -20,10 +20,10 @@ export const runningSegments = {
         id: 2783427,
         name: "Sognsvann motsols, strand til strand"
     },
-    10100312: {
-        id:10100312,
-        name:"Sognsvann-Ullevålseter"
-    },
+    // 10100312: {
+    //     id:10100312,
+    //     name:"Sognsvann-Ullevålseter"
+    // },
     2553283: {
         id:2553283,
         name:"Tour de Finance løp"
