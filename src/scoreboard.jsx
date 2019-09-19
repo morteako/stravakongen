@@ -4,8 +4,8 @@ import Table from 'react-bootstrap/Table';
 import getRanking from "./ranking";
 import Row from "./row";
 import SegmentLink from "./segmentLink";
-import styles from "./mystyle.module.css"
-import findNewestPr from "./findNewestPr";
+// import styles from "./mystyle.module.css"
+// import findNewestPr from "./findNewestPr";
 import HeaderRow from "./HeaderRow";
 
 
@@ -18,7 +18,7 @@ const Scoreboard = props => {
     const allTime = state.athleteEfforts[dateRange];
     const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
     
-    const newestPrDate = findNewestPr(leaderboardsAllTime);
+    // const newestPrDate = findNewestPr(leaderboardsAllTime);
 
     const segmentRowMapper = clicked => segments.map(seg => {
         const numAthletes = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";

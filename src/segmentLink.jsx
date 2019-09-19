@@ -12,13 +12,11 @@ const SegmentLink = props => {
     const prettyAverageGrade = averageGrade;
     const extraInfo = ` - ${prettyDistance} ${prettyAverageGrade}% (${numAthletes})`;
     return (
-        <th key={segmentId}> 
-            <a  className={styles.header}
-                href={segmentUrl + segmentId}
-            > 
-                {segmentName} {clicked && extraInfo}
-            </a> 
-        </th>
+        <a  className={styles.header}
+            href={segmentUrl + segmentId}
+        > 
+            {segmentName} {clicked && extraInfo}
+        </a> 
     );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./mystyle.module.css"
+// import styles from "./mystyle.module.css"
+import HeaderTh from "./HeaderTh";
 
 const HeaderRow = props => {
     const {segmentRowMapper} = props;
@@ -8,13 +9,9 @@ const HeaderRow = props => {
     
     return (
         <tr onClick={() => setClicked(!clicked)}>
-            <th className={styles.header}>Navn</th>
-            <th className={styles.header}>
-                #
-                {" "}
-                <span>(Poeng)</span>
-            </th>
-            {segmentRowMapper(clicked)}      
+            <HeaderTh child={"Navn"}/>
+            <HeaderTh child={"# (Poeng)"}/>
+            {segmentRowMapper(clicked).map(x => <HeaderTh key={x.props.segmentId} child={x}/>)}      
         </tr>
     );
 };
