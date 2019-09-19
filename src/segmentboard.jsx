@@ -42,7 +42,6 @@ const SegmentBoard = props => {
       useStoreActions(actions => actions.addSegment)(segmentPayload);
 
       return null;
-      
 } 
 
 export default SegmentBoard;

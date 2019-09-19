@@ -43,8 +43,12 @@ const Scoreboard = props => {
             <thead>
                 <tr>
                     <th className={styles.header}>Navn</th>
-                    <th className={styles.header}>#</th>
-                    {segmentRow}            
+                    <th className={styles.header}>
+                        #
+                        {" "}
+                        <span className={styles.scores}>(Poeng)</span>
+                    </th>
+                    {segmentRow}      
                 </tr>
             </thead>
             <tbody>
