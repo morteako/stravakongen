@@ -2,7 +2,8 @@ import React from 'react';
 import SegmentBoard from './segmentboard';
 import Scoreboard from './scoreboard';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown, { DropdownDivider } from 'react-bootstrap/Dropdown';
+import Dropdown  from 'react-bootstrap/Dropdown';
+import DropdownDivider  from 'react-bootstrap/Dropdown';
 import styles from "./mystyle.module.css";
 import { groupEmojis, groups } from './data/segments';
 import { allSegments } from './data/segments';
@@ -62,7 +63,7 @@ const Page = () => {
           title={"Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]}
         >
           {mapGroupsToItems([group1,group2])}
-          {/* <DropdownDivider /> */}
+          <DropdownDivider className={styles.divider}/>
           {mapGroupsToItems(restOfGroups)}
 
 
@@ -72,7 +73,6 @@ const Page = () => {
           title={"Periode : " + dateRangeTitle[dateRange]}
         >
           {dateRangeDropwdownItems}
-
         </DropdownButton>
         
       </div>
