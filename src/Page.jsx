@@ -6,21 +6,15 @@ import Dropdown, { DropdownDivider } from 'react-bootstrap/Dropdown';
 import styles from "./mystyle.module.css";
 import { groupEmojis, groups } from './data/segments';
 import { allSegments } from './data/segments';
-import {includes} from "lodash";
+import {withRouter} from 'react-router';
+import * as qs from "query-string";
 
 const dateRangeTitle = {
   "all" : "Gjennom alle tider",
   "year": "I år"
 }
 
-const activityFilters = {
-  "cycling" : x => x.activityType === "cycling",
-  "running" : x => x.activityType === "running",
-  "both"    : _ => true
-}
-
-
-const Page = () => {
+const Page = props => {
 
     const [dateRange,setDateRange] = React.useState("all");
     const firstGroupAsDefault = groups[0];
@@ -52,36 +46,40 @@ const Page = () => {
     // ));
 
   const [group1,group2,...restOfGroups] = Object.keys(groupEmojis);
-  console.log(restOfGroups);
+  console.log(props);
+
+
+  // qs.parse(props.location.search);
 
   return (
-    <div>   
-      <div className={styles.button_row}>
-      <DropdownButton 
-          className={styles.button} 
-          title={"Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]}
-        >
-          {mapGroupsToItems([group1,group2])}
-          {/* <DropdownDivider /> */}
-          {mapGroupsToItems(restOfGroups)}
+        <div>   
+          <div className={styles.button_row}>
+          <DropdownButton 
+              className={styles.button} 
+              title={"Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]}
+            >
+              {mapGroupsToItems([group1,group2])}
+              {/* <DropdownDivider /> */}
+              {mapGroupsToItems(restOfGroups)}
 
 
-        </DropdownButton>
-        <DropdownButton 
-          className={styles.button} 
-          title={"Periode : " + dateRangeTitle[dateRange]}
-        >
-          {dateRangeDropwdownItems}
+            </DropdownButton>
+            <DropdownButton 
+              className={styles.button} 
+              title={"Periode : " + dateRangeTitle[dateRange]}
+            >
+              {dateRangeDropwdownItems}
 
-        </DropdownButton>
-        
-      </div>
-      
-      <Scoreboard segments={currentSegments} dateRange={dateRange}/>
-      
-      {currentSegments.map(createSegmentBoard)}
-    </div>
+            </DropdownButton>
+            
+          </div>
+          
+          <Scoreboard segments={currentSegments} dateRange={dateRange}/>
+          
+          {currentSegments.map(createSegmentBoard)}
+        </div>
+
   );
 }
 
-export default Page;
+export default withRouter(Page);

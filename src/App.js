@@ -1,5 +1,6 @@
 import React from 'react';
 import Page from './Page';
+import RoutePage from './RoutePage';
 import { StoreProvider, createStore, action } from 'easy-peasy';
 
 
@@ -52,7 +53,7 @@ function App() {
   zoomOutMobile();
   return (
     <StoreProvider store={store}>
-      <Page/>
+      <RoutePage/>
     </StoreProvider>
   );
 }
