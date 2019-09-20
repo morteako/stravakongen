@@ -1,8 +1,8 @@
 {
-  "name": "test-gh",
+  "name": "stravakongen",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://morteako.github.io/test-gh/",
+  "homepage": "https://morteako.github.io/stravakongen/",
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
