@@ -57,9 +57,9 @@ export const allSegments = {
             "AllRoundern":1,
         }
     },
-    8281150 : {
-        id:8281150,
-        name:"Tryvann (løp)",
+    5102820 : {
+        id:5102820,
+        name:"Holmenkollveien",
         groups: {
             "Tryvanndobbelen":1,
         },
@@ -83,14 +83,15 @@ export const allSegments = {
 
 const bikeE = "🚴🏼‍♂️";
 const runE = "🏃🏻‍♂️";
+const bothE = bikeE + " " + runE;
 
 export const groupEmojis = {
     "Klatrekongen":bikeE,
     "Løpekongen":runE,
     "Klatrekongen Vest":bikeE,
-    "Kikut Sykkel": bikeE,
-    "Tryvanndobbelen": runE,
-    "AllRoundern":bikeE + " " + runE,
+    // "Kikut Sykkel": bikeE,
+    "Tryvanndobbelen": bothE,
+    "AllRoundern": bothE,
 };
 
 export const groups = Object.keys(groupEmojis);
