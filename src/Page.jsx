@@ -46,11 +46,6 @@ const Page = () => {
       </Dropdown.Item>
     ));
   
-    // const segmentGroupsDropdownItems = Object.entries(groupEmojis).map( ([group,emoji]) => (
-    //   <Dropdown.Item key={group} className={styles.dropdown_item} onClick={_ => setsegmentGroup(group)}>
-    //     {group + " " + emoji}
-    //   </Dropdown.Item>
-    // ));
 
   const [group1,group2,...restOfGroups] = Object.keys(groupEmojis);
   console.log(restOfGroups);
@@ -58,16 +53,15 @@ const Page = () => {
   return (
     <div>   
       <div className={styles.button_row}>
-      <DropdownButton 
-          className={styles.button} 
-          title={"Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]}
-        >
-          {mapGroupsToItems([group1,group2])}
-          <DropdownDivider className={styles.divider}/>
-          {mapGroupsToItems(restOfGroups)}
-
-
+        <DropdownButton 
+            className={styles.button} 
+            title={"Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]}
+          >
+            {mapGroupsToItems([group1,group2])}
+            <DropdownDivider className={styles.divider}/>
+            {mapGroupsToItems(restOfGroups)}
         </DropdownButton>
+
         <DropdownButton 
           className={styles.button} 
           title={"Periode : " + dateRangeTitle[dateRange]}
