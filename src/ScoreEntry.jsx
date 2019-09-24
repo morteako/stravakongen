@@ -24,7 +24,6 @@ const isSetPastWeek = date => {
     
     const diffTime = Math.abs(new Date() - new Date(date));
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    // console.log(date,new Date(date),diffTime,diffDays);
     return diffDays < 7;
 }
 
@@ -40,9 +39,8 @@ const ScoreEntry = props => {
         3:styles.entry_third
     };
     const scoreClass = entryClasses[rank] || styles.entry_normal;
-    // console.log(scoreClass);
+    
     const wasSetPastWeek = isSetPastWeek(start_date_local);
-    // if(wasSetPastWeek) console.log(date);
 
     const borderClass = wasSetPastWeek ? ` ${styles.entry_border}` : "";
     return (
