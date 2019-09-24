@@ -63,3 +63,8 @@
   height: 1px;
   width: 100%;
 }
+
+.entry_border {
+    color: red;
+    border: 50px solid green;
+}
