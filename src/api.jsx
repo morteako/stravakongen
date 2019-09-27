@@ -1,5 +1,4 @@
 import axios from "axios";
-import { clubs } from "./data/ids";
 
 const strava = "https://www.strava.com/api/v3/";
 
@@ -10,9 +9,6 @@ export const getRequest = url =>
     }
   });
 
-// const addBekk = url => `${url}?club_id=${clubs.bekk}`
-// const addThisYear = url => `${url}?date_range=this_year`
-
 const addParam = (url, key, value) => `${url}&${key}=${value}`;
 
 const addToStrava = (...args) => strava + args.join("/") + "?";
@@ -22,15 +18,6 @@ export const createSegment = id => addToStrava("segments", id);
 
 export const createSegmentLeaderboard = id =>
   addToStrava("segments", id, "leaderboard");
-
-export const createSegmentLeaderboardBekk = id =>
-  addParam(addToStrava("segments", id, "leaderboard"), "club_id", clubs.bekk);
-
-export const createSegmentLeaderboardBekkFull = id =>
-  addParam(createSegmentLeaderboardBekk(id), "per_page", 50);
-
-export const createSegmentLeaderboardBekkThisYear = id =>
-  addParam(createSegmentLeaderboardBekkFull(id), "date_range", "this_year");
 
 export const createSegmentLeaderboardClub = (club, id) =>
   addParam(addToStrava("segments", id, "leaderboard"), "club_id", club);

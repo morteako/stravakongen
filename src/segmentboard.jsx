@@ -19,8 +19,6 @@ const SegmentBoard = props => {
   useEffect(() => {
     const leaderboardRequestCreator = urlFunctions[props.dateRange];
     const req = leaderboardRequestCreator(club, segment.id);
-    console.log(req);
-    console.log(req.split(" "));
     Api.getRequest(req).then(x => {
       setPayload({
         id: segment.id,
