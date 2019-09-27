@@ -31,3 +31,16 @@ export const createSegmentLeaderboardBekkFull = id =>
 
 export const createSegmentLeaderboardBekkThisYear = id =>
   addParam(createSegmentLeaderboardBekkFull(id), "date_range", "this_year");
+
+export const createSegmentLeaderboardClub = (club, id) =>
+  addParam(addToStrava("segments", id, "leaderboard"), "club_id", club);
+
+export const createSegmentLeaderboardClubFull = (club, id) =>
+  addParam(createSegmentLeaderboardClub(club, id), "per_page", 50);
+
+export const createSegmentLeaderboardClubThisYear = (club, id) =>
+  addParam(
+    createSegmentLeaderboardClubFull(club, id),
+    "date_range",
+    "this_year"
+  );

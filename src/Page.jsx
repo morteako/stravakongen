@@ -24,8 +24,15 @@ const Page = props => {
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
 
+  const queryParams = qs.parse(props.location.search);
+
   const createSegmentBoard = (seg, ind) => (
-    <SegmentBoard key={ind} dateRange={dateRange} segment={seg} />
+    <SegmentBoard
+      key={ind}
+      club={queryParams.club}
+      dateRange={dateRange}
+      segment={seg}
+    />
   );
 
   const currentSegments = Object.values(allSegments).filter(
