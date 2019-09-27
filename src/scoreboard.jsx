@@ -7,6 +7,7 @@ import SegmentLink from "./segmentLink";
 // import styles from "./mystyle.module.css"
 // import findNewestPr from "./findNewestPr";
 import HeaderRow from "./HeaderRow";
+import { allSegments } from "./data/segments";
 
 
 const Scoreboard = props => {
@@ -22,15 +23,18 @@ const Scoreboard = props => {
 
     const segmentRowMapper = clicked => segments.map(seg => {
         const numAthletes = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";
-        return (<SegmentLink 
-            key={seg.id}
-            segmentId={seg.id}
-            numAthletes={numAthletes}
-            segmentName={seg.name}
-            distance={storeSegments[seg.id] && storeSegments[seg.id].distance}
-            averageGrade={storeSegments[seg.id] && storeSegments[seg.id].average_grade}
-            clicked={clicked}
-        />);
+        const backupName = storeSegments[seg.id] && storeSegments[seg.id].name;
+        const segmentName = seg.name || backupName;
+        return (
+            <SegmentLink 
+                key={seg.id}
+                segmentId={seg.id}
+                numAthletes={numAthletes}
+                segmentName={segmentName}
+                distance={storeSegments[seg.id] && storeSegments[seg.id].distance}
+                averageGrade={storeSegments[seg.id] && storeSegments[seg.id].average_grade}
+                clicked={clicked}
+            />);
         }
     );
     
