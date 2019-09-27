@@ -15,12 +15,14 @@ const dateRangeTitle = {
 };
 
 const Page = props => {
-  const segmentGroupFromUrl = props.match.params.segmentGroup;
+  const segmentGroupsFromUrl = props.match.params.segmentGroup;
   const firstGroupAsDefault = groups[0];
-  const startGroup = segmentGroupFromUrl || firstGroupAsDefault;
+  const startSegmentGroup = groupEmojis[segmentGroupsFromUrl]
+    ? segmentGroupsFromUrl
+    : firstGroupAsDefault;
 
   const [dateRange, setDateRange] = React.useState("all");
-  const [segmentGroup, setsegmentGroup] = React.useState(startGroup);
+  const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
 
   const createSegmentBoard = (seg, ind) => (
     <SegmentBoard key={ind} dateRange={dateRange} segment={seg} />
@@ -44,7 +46,11 @@ const Page = props => {
 
   const mapGroupsToItems = groups =>
     groups.map(group => (
-      <Dropdown.Item key={group} className={styles.dropdown_item} href={group}>
+      <Dropdown.Item
+        key={group}
+        className={styles.dropdown_item}
+        onClick={() => setSegmentGroup(group)}
+      >
         {group + " " + groupEmojis[group]}
       </Dropdown.Item>
     ));

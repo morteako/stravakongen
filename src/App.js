@@ -1,7 +1,7 @@
 import React from "react";
 import Page from "./Page";
 import RoutePage from "./RoutePage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { StoreProvider, createStore, action } from "easy-peasy";
 
 const store = createStore({
@@ -55,8 +55,8 @@ function App() {
     <StoreProvider store={store}>
       <Router>
         <Switch>
-          <Route path="/:segmentGroup" component={Page} />
-          <Route path="/" component={Page} />
+          <Route path={"/:segmentGroup"} component={Page} />
+          <Route path={"/"} component={Page} />
         </Switch>
       </Router>
     </StoreProvider>
