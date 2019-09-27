@@ -7,7 +7,6 @@ export const getRequest = url =>
   axios.request(url, {
     params: {
       access_token: "76b4ec0f6143822d5f5d33a42fc554daa5f9f82d"
-      // access_token: "8e7c1f0a3911e6c54150ebc3cbdbde9066270ee4"
     }
   });
 
@@ -31,6 +30,4 @@ export const createSegmentLeaderboardBekkFull = id =>
   addParam(createSegmentLeaderboardBekk(id), "per_page", 50);
 
 export const createSegmentLeaderboardBekkThisYear = id =>
-  addParam(createSegmentLeaderboardBekk(id), "date_range", "this_year");
-
-export const identity = x => x;
+  addParam(createSegmentLeaderboardBekkFull(id), "date_range", "this_year");

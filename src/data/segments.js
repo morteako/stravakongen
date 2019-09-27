@@ -21,6 +21,7 @@ export const allSegments = {
     name: "Grefsenkollen",
     groups: {
       "Klatrekongen Vest": 1,
+      "Klatrekongen Øst": 1,
       Klatrekongen: 1,
       AllRoundern: 1
     }
@@ -29,7 +30,15 @@ export const allSegments = {
     id: 632847,
     name: "Kongsveien",
     groups: {
-      Klatrekongen: 1
+      Klatrekongen: 1,
+      "Klatrekongen Øst":1
+    }
+  },
+  666298: {
+    id: 666298,
+    name: "Svartskogbakken",
+    groups: {
+      "Klatrekongen Øst": 1
     }
   },
   2783427: {
@@ -90,6 +99,13 @@ export const allSegments = {
       Utforkongen: 1
     }
   },
+  6890951: {
+    id: 6890951,
+    name: "Greveveien downhill",
+    groups: {
+      Utforkongen: 1
+    }
+  },
   666794: {
     id: 666794,
     name: "Sørkedalen",
@@ -104,6 +120,7 @@ export const allSegments = {
       Tempokongen: 1
     }
   }
+  
 };
 
 const bikeE = "🚴🏼‍♂️";
@@ -116,6 +133,7 @@ export const groupEmojis = {
   Klatrekongen: bikeE,
   Løpekongen: runE,
   "Klatrekongen Vest": bikeE,
+  "Klatrekongen Øst": bikeE,
   Tempokongen: bikeE,
   Utforkongen: bikeDownhillE,
   // "Kikut Sykkel": bikeE,
