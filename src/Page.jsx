@@ -7,7 +7,6 @@ import DropdownDivider from "react-bootstrap/Dropdown";
 import styles from "./mystyle.module.css";
 import { groupEmojis, groups } from "./data/segments";
 import { allSegments } from "./data/segments";
-import { withRouter } from "react-router";
 import * as qs from "query-string";
 
 const dateRangeTitle = {
@@ -16,9 +15,12 @@ const dateRangeTitle = {
 };
 
 const Page = props => {
-  const [dateRange, setDateRange] = React.useState("all");
+  const segmentGroupFromUrl = props.match.params.segmentGroup;
   const firstGroupAsDefault = groups[0];
-  const [segmentGroup, setsegmentGroup] = React.useState(firstGroupAsDefault);
+  const startGroup = segmentGroupFromUrl || firstGroupAsDefault;
+
+  const [dateRange, setDateRange] = React.useState("all");
+  const [segmentGroup, setsegmentGroup] = React.useState(startGroup);
 
   const createSegmentBoard = (seg, ind) => (
     <SegmentBoard key={ind} dateRange={dateRange} segment={seg} />
@@ -42,19 +44,13 @@ const Page = props => {
 
   const mapGroupsToItems = groups =>
     groups.map(group => (
-      <Dropdown.Item
-        key={group}
-        className={styles.dropdown_item}
-        onClick={_ => setsegmentGroup(group)}
-      >
+      <Dropdown.Item key={group} className={styles.dropdown_item} href={group}>
         {group + " " + groupEmojis[group]}
       </Dropdown.Item>
     ));
 
   const [group1, group2, ...restOfGroups] = Object.keys(groupEmojis);
   console.log(props);
-
-  // qs.parse(props.location.search);
 
   return (
     <div>
@@ -84,4 +80,4 @@ const Page = props => {
   );
 };
 
-export default withRouter(Page);
+export default Page;

@@ -1,7 +1,7 @@
 import React from "react";
 import Page from "./Page";
 import RoutePage from "./RoutePage";
-import { Router, Switch, Route } from "react-router";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { StoreProvider, createStore, action } from "easy-peasy";
 
 const store = createStore({
@@ -49,20 +49,17 @@ const zoomOutMobile = () => {
   }
 };
 
-const comp = (
-  <StoreProvider store={store}>
-    <RoutePage />
-  </StoreProvider>
-);
-
 function App() {
   zoomOutMobile();
   return (
-    <Router>
-      <Switch>
-        <Route path="/" component={comp} />
-      </Switch>
-    </Router>
+    <StoreProvider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/:segmentGroup" component={Page} />
+          <Route path="/" component={Page} />
+        </Switch>
+      </Router>
+    </StoreProvider>
   );
 }
 
