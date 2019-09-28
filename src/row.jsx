@@ -25,8 +25,8 @@ const Row = props => {
                     {` (${ranks})`}
                 </span>
             </td>
-            {Array.from(segments).map( (seg,ind) => 
-                createScoreEntry(athleteRecord[seg.id],clicked,ind))}
+            {Array.from(segments).map( (segId,ind) => 
+                createScoreEntry(athleteRecord[segId],clicked,ind))}
         </tr>
     );
 };

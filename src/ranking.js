@@ -20,11 +20,11 @@ const getRanking = (allTime,segments,leaderboards) => {
         if(!effort) return getNoEffortScore(segmentId);
         return effort.rank;
     }
-    const curSegments = Array.from(segments.filter(seg => leaderboards[seg.id]));
+    const curSegments = Array.from(segments.filter(segId => leaderboards[segId]));
 
     const createRanks = ([athlete_name,athleteRecord],ind) => ({
             athleteName : athlete_name,
-            ranks : curSegments.map( seg => getRank(athleteRecord[seg.id],seg.id))
+            ranks : curSegments.map(segId => getRank(athleteRecord[segId],segId))
     });
     const ranks = Object.entries(allTime).map(createRanks);
 
@@ -43,7 +43,7 @@ const getRanking = (allTime,segments,leaderboards) => {
 
     const noEffortsScore = 
         curSegments
-                .map(seg => getNoEffortScore(seg.id))
+                .map(segId => getNoEffortScore(segId))
                 .reduce((a, b) => a + b, 0);
 
     const onlyWithEfforts = sorted.filter(x => x.ranks !== noEffortsScore);

@@ -21,18 +21,19 @@ const Scoreboard = props => {
     
     // const newestPrDate = findNewestPr(leaderboardsAllTime);
 
-    const segmentRowMapper = clicked => segments.map(seg => {
-        const numAthletes = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";
-        const backupName = storeSegments[seg.id] && storeSegments[seg.id].name;
-        const segmentName = seg.name || backupName;
+    const segmentRowMapper = clicked => segments.map(segId => {
+        const numAthletes = leaderboardsAllTime[segId] ? leaderboardsAllTime[segId].length : "";
+        const backupName = storeSegments[segId] && storeSegments[segId].name;
+        // const segmentName = seg.name || backupName;
+        const segmentName = backupName;
         return (
             <SegmentLink 
-                key={seg.id}
-                segmentId={seg.id}
+                key={segId}
+                segmentId={segId}
                 numAthletes={numAthletes}
                 segmentName={segmentName}
-                distance={storeSegments[seg.id] && storeSegments[seg.id].distance}
-                averageGrade={storeSegments[seg.id] && storeSegments[seg.id].average_grade}
+                distance={storeSegments[segId] && storeSegments[segId].distance}
+                averageGrade={storeSegments[segId] && storeSegments[segId].average_grade}
                 clicked={clicked}
             />);
         }

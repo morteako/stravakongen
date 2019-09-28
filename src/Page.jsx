@@ -26,18 +26,18 @@ const Page = props => {
 
   const queryParams = qs.parse(props.location.search);
 
-  const createSegmentBoard = (seg, ind) => (
+  const createSegmentBoard = (segId, ind) => (
     <SegmentBoard
       key={ind}
       club={queryParams.club}
       dateRange={dateRange}
-      segment={seg}
+      segmentId={segId}
     />
   );
 
   const currentSegments = Object.values(allSegments).filter(
     seg => seg.groups[segmentGroup]
-  );
+  ).map(x => x.id);
 
   const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map(
     ([k, v]) => (

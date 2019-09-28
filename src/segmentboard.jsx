@@ -12,31 +12,31 @@ const urlFunctions = {
 const SegmentBoard = props => {
   const [segmentPayload, setSegmentPayload] = useState(null);
   const [payload, setPayload] = useState(null);
-  const segment = props.segment;
+  const segmentId = props.segmentId;
 
   const club = props.club || clubs.bekk;
 
   useEffect(() => {
     const leaderboardRequestCreator = urlFunctions[props.dateRange];
-    const req = leaderboardRequestCreator(club, segment.id);
+    const req = leaderboardRequestCreator(club, segmentId);
     Api.getRequest(req).then(x => {
       setPayload({
-        id: segment.id,
+        id: segmentId,
         dateRange: props.dateRange,
         leaderboard: x.data.entries
       });
     });
-  }, [segment.id, props.dateRange, club]);
+  }, [segmentId, props.dateRange, club]);
 
   useStoreActions(actions => actions.addLeaderboard)(payload);
 
   useEffect(() => {
-    const segReq = Api.createSegment(segment.id);
+    const segReq = Api.createSegment(segmentId);
 
     Api.getRequest(segReq).then(x => {
       setSegmentPayload(x.data);
     });
-  }, [segment.id]);
+  }, [segmentId]);
 
   useStoreActions(actions => actions.addSegment)(segmentPayload);
 
