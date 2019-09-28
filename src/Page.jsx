@@ -26,6 +26,16 @@ const Page = props => {
 
   const queryParams = qs.parse(props.location.search);
 
+  let urlSegments = [];
+  try {
+    const res = JSON.parse(queryParams.segments);
+    urlSegments = !res.some(isNaN) ? res : [];
+  } catch (error) {
+    console.log(error);
+  
+  }
+
+
   const createSegmentBoard = (segId, ind) => (
     <SegmentBoard
       key={ind}
@@ -35,9 +45,16 @@ const Page = props => {
     />
   );
 
-  const currentSegments = Object.values(allSegments).filter(
-    seg => seg.groups[segmentGroup]
-  ).map(x => x.id);
+  const segmentsFromGroup = Object
+    .values(allSegments)
+    .filter(seg => seg.groups[segmentGroup])
+    .map(x => x.id);
+
+  const currentSegments = 
+    urlSegments.length > 0
+    ? urlSegments
+    : segmentsFromGroup;
+
 
   const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map(
     ([k, v]) => (
