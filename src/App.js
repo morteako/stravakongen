@@ -1,21 +1,24 @@
 import React from "react";
 import Page from "./Page";
-import RoutePage from "./RoutePage";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { StoreProvider, createStore, action } from "easy-peasy";
 
 const store = createStore({
+  accessToken:null,
   athleteEfforts: {
     all: {},
     year: {}
   },
-
   segmentLeaderboards: {
     all: {},
     year: {}
   },
   segments: {},
 
+  addAccessToken: action((state, acces_token) => {
+    if(acces_token)
+      state.accessToken = acces_token;
+  }),
   addSegment: action((state, segment) => {
     if (!segment) return;
     const { name, distance, average_grade } = segment;
@@ -49,7 +52,9 @@ const zoomOutMobile = () => {
   }
 };
 
-function App() {
+
+
+const App = () => {
   zoomOutMobile();
   return (
     <StoreProvider store={store}>

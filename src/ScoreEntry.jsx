@@ -13,11 +13,17 @@ const EmptyScoreEntry = _ => {
     return <td>  </td>;
 }
 
-const secToMMSS = timeInSecStr => { 
-    const secs = parseInt(timeInSecStr,10);
+const secToMMSS = durationInSec => { 
+    const secs = parseInt(durationInSec,10);
     const date = new Date(null);
     date.setSeconds( secs );
-    return date.toISOString().substr(14, 5);
+    return (
+        date.getHours() > 1 //means that it lasts more than 1 hour
+        ? date.toISOString().substr(11, 8) //"add" hh:
+        : date.toISOString().substr(14, 5) //skip hh:
+    )
+
+    ;
 }
 
 const isSetPastWeek = date => {

@@ -1,14 +1,37 @@
 import axios from "axios";
+import { useStoreActions } from "easy-peasy";
+import React from "react";
 
 const strava = "https://www.strava.com/api/v3/";
 
-export const getRequest = url =>
-  axios.request(url, {
-    params: {
-      access_token: "76b4ec0f6143822d5f5d33a42fc554daa5f9f82d"
-    }
-  });
+export const useAccesToken = () => {
 
+  const [token,setToken] = React.useState(null);
+
+  React.useEffect( () => {
+    axios.post(strava+"oauth/token", {
+      client_id: process.env.REACT_APP_CLIENT_ID,
+      grant_type:"refresh_token",
+      client_secret: process.env.REACT_APP_CLIENT_SECRET,
+      refresh_token: process.env.REACT_APP_REFRESH_TOKEN
+    }).then(x => {
+      setToken(x.data.access_token);
+    })
+    .catch(x => console.log(x));
+    },
+  []);
+
+  useStoreActions(actions => actions.addAccessToken)(token);
+}
+
+
+
+export const getRequest = (access_token,url) => {
+
+  return axios.request(url, {
+    params: {access_token}
+  });
+}
 const addParam = (url, key, value) => `${url}&${key}=${value}`;
 
 const addToStrava = (...args) => strava + args.join("/") + "?";

@@ -8,6 +8,7 @@ import styles from "./mystyle.module.css";
 import { groupEmojis, groups } from "./data/segments";
 import { allSegments } from "./data/segments";
 import * as qs from "query-string";
+import { useAccesToken } from "./api";
 
 const dateRangeTitle = {
   all: "Gjennom alle tider",
@@ -26,13 +27,14 @@ const Page = props => {
 
   const queryParams = qs.parse(props.location.search);
 
+  useAccesToken();
+
   let urlSegments = [];
   try {
     const res = JSON.parse(queryParams.segments);
     urlSegments = !res.some(isNaN) ? res : [];
   } catch (error) {
-    console.log(error);
-  
+    // console.log(error);
   }
 
 
@@ -80,7 +82,6 @@ const Page = props => {
     ));
 
   const [group1, group2, ...restOfGroups] = Object.keys(groupEmojis);
-  console.log(props);
 
   return (
     <div>
