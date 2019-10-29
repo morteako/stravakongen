@@ -1,4 +1,4 @@
-#Env
+## Env
 for å kjøre lokalt så trengs det en .env i root som inneholder :
 ```
 REACT_APP_REFRESH_TOKEN=YOUR_TOKEN
