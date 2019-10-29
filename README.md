@@ -10,7 +10,9 @@ eller sende meg en mail på morten.kolstad@bekk.no
 
 ## Install and start
 `git checkout master`
+
 `npm i`
+
 `npm start`
 
 ## Deploy
