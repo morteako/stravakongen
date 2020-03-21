@@ -53,8 +53,8 @@ const Page = props => {
   const currentSegments =
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
 
-  const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map(
-    ([k, v]) => (
+  const dateRangeDropwdownItems = Object.entries(dateRangeTitle)
+    .map(([k, v]) => (
       <Dropdown.Item
         key={k}
         className={styles.dropdown_item}

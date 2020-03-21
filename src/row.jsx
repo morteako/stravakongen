@@ -6,7 +6,7 @@ import {createScoreEntry} from "./ScoreEntry";
 const Row = props => {
     const [clicked, setClicked] = React.useState(false);
 
-    const [athleteName,ranks,athleteRecord,segments,rankPos] = props.args;
+    const [athleteName,score,athleteRecord,segments,rankPos] = props.args;
 
     return (
         <tr onClick={() => setClicked(!clicked)}> 
@@ -22,7 +22,7 @@ const Row = props => {
                     {rankPos+1}
                 </span>
                 <span className={styles.ranktext_score}>
-                    {` (${ranks})`}
+                    {` (${score})`}
                 </span>
             </td>
             {Array.from(segments).map( (segId,ind) => 

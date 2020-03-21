@@ -36,8 +36,8 @@ const Scoreboard = props => {
     
     const ranking = getRanking(allTime, segments,leaderboardsAllTime);
     
-    const dataRows = ranking.map(({athleteName,ranks,rankPos},ind) =>  
-        <Row key={athleteName} args={[athleteName,ranks,allTime[athleteName],segments,rankPos]} />
+    const dataRows = ranking.map(({athleteName,score,rankPos},ind) =>  
+        <Row key={athleteName} args={[athleteName,score,allTime[athleteName],segments,rankPos]} />
     );
 
     return (
