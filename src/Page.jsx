@@ -76,7 +76,7 @@ const Page = props => {
       </Dropdown.Item>
     ));
 
-  const [group1, group2, ...restOfGroups] = Object.keys(groupEmojis);
+  const [mainGroup1, mainGroup2, ...restOfGroups] = Object.keys(groupEmojis);
 
   return (
     <div>
@@ -87,7 +87,7 @@ const Page = props => {
             "Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]
           }
         >
-          {mapGroupsToItems([group1, group2])}
+          {mapGroupsToItems([mainGroup1, mainGroup2])}
           <DropdownDivider className={styles.divider} />
           {mapGroupsToItems(restOfGroups)}
         </DropdownButton>
