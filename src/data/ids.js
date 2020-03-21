@@ -1,2 +1,1 @@
-
-export const clubs = {bekk : 8433};
+export const clubs = { bekk: 8433 };

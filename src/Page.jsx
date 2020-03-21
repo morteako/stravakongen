@@ -37,7 +37,6 @@ const Page = props => {
     // console.log(error);
   }
 
-
   const createSegmentBoard = (segId, ind) => (
     <SegmentBoard
       key={ind}
@@ -47,16 +46,12 @@ const Page = props => {
     />
   );
 
-  const segmentsFromGroup = Object
-    .values(allSegments)
+  const segmentsFromGroup = Object.values(allSegments)
     .filter(seg => seg.groups[segmentGroup])
     .map(x => x.id);
 
-  const currentSegments = 
-    urlSegments.length > 0
-    ? urlSegments
-    : segmentsFromGroup;
-
+  const currentSegments =
+    urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
 
   const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map(
     ([k, v]) => (

@@ -31,7 +31,7 @@ export const allSegments = {
     name: "Kongsveien",
     groups: {
       Klatrekongen: 1,
-      "Klatrekongen Øst":1
+      "Klatrekongen Øst": 1
     }
   },
   666298: {
@@ -120,7 +120,6 @@ export const allSegments = {
       Tempokongen: 1
     }
   }
-  
 };
 
 const bikeE = "🚴🏼‍♂️";
