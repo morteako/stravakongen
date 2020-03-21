@@ -17,12 +17,9 @@ const secToMMSS = durationInSec => {
     const secs = parseInt(durationInSec,10);
     const date = new Date(null);
     date.setSeconds( secs );
-    return (
-        date.getHours() > 1 //means that it lasts more than 1 hour
+    return date.getHours() > 1 //means that it lasts more than 1 hour
         ? date.toISOString().substr(11, 8) //"add" hh:
         : date.toISOString().substr(14, 5) //skip hh:
-    )
-
     ;
 }
 
@@ -34,7 +31,7 @@ const isSetPastWeek = date => {
 }
 
 const ScoreEntry = props => {
-    const {athlete_name, elapsed_time, start_date_local,rank,clicked} = props;
+    const {elapsed_time, start_date_local,rank,clicked} = props;
     const date = start_date_local.substr(0,10).split("-").reverse().join(".");
     const elapsedTimeInSeconds = secToMMSS(elapsed_time);
     const text = `${elapsedTimeInSeconds} (#${rank})`;
@@ -45,10 +42,8 @@ const ScoreEntry = props => {
         3:styles.entry_third
     };
     const scoreClass = entryClasses[rank] || styles.entry_normal;
-    
-    const wasSetPastWeek = isSetPastWeek(start_date_local);
 
-    const borderClass = wasSetPastWeek ? ` ${styles.entry_border}` : "";
+    const borderClass = isSetPastWeek(start_date_local) ? ` ${styles.entry_border}` : "";
     return (
         <td className={scoreClass + borderClass}> 
             {text} 
