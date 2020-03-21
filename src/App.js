@@ -4,7 +4,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { StoreProvider, createStore, action } from "easy-peasy";
 
 const store = createStore({
-  accessToken:null,
+  accessToken: null,
   athleteEfforts: {
     all: {},
     year: {}
@@ -16,8 +16,7 @@ const store = createStore({
   segments: {},
 
   addAccessToken: action((state, acces_token) => {
-    if(acces_token)
-      state.accessToken = acces_token;
+    if (acces_token) state.accessToken = acces_token;
   }),
   addSegment: action((state, segment) => {
     if (!segment) return;
@@ -52,8 +51,6 @@ const zoomOutMobile = () => {
   }
 };
 
-
-
 const App = () => {
   zoomOutMobile();
   return (
@@ -66,6 +63,6 @@ const App = () => {
       </Router>
     </StoreProvider>
   );
-}
+};
 
 export default App;

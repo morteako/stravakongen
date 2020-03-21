@@ -37,7 +37,6 @@ const Page = props => {
     // console.log(error);
   }
 
-
   const createSegmentBoard = (segId, ind) => (
     <SegmentBoard
       key={ind}
@@ -47,16 +46,12 @@ const Page = props => {
     />
   );
 
-  const segmentsFromGroup = Object
-    .values(allSegments)
+  const segmentsFromGroup = Object.values(allSegments)
     .filter(seg => seg.groups[segmentGroup])
     .map(x => x.id);
 
-  const currentSegments = 
-    urlSegments.length > 0
-    ? urlSegments
-    : segmentsFromGroup;
-
+  const currentSegments =
+    urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
 
   const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map(
     ([k, v]) => (
@@ -81,7 +76,7 @@ const Page = props => {
       </Dropdown.Item>
     ));
 
-  const [group1, group2, ...restOfGroups] = Object.keys(groupEmojis);
+  const [mainGroup1, mainGroup2, ...restOfGroups] = Object.keys(groupEmojis);
 
   return (
     <div>
@@ -92,7 +87,7 @@ const Page = props => {
             "Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]
           }
         >
-          {mapGroupsToItems([group1, group2])}
+          {mapGroupsToItems([mainGroup1, mainGroup2])}
           <DropdownDivider className={styles.divider} />
           {mapGroupsToItems(restOfGroups)}
         </DropdownButton>
