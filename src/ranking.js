@@ -1,4 +1,3 @@
-import * as L from "partial.lenses";
 import { groupBy } from "lodash";
 
 const fixSharedPosition = rankings => {
@@ -23,9 +22,9 @@ const getRanking = (allTime, segments, leaderboards) => {
     return {score : effort.rank, effort:true};
   };
 
-  const curSegments = Array.from(segments.filter(segId => leaderboards[segId]));
+  const curSegments = segments.filter(segId => leaderboards[segId]);
 
-  const createRanks = ([athlete_name, athleteRecord], ind) => ({
+  const createRanks = ([athlete_name, athleteRecord]) => ({
     athleteName: athlete_name,
     ranks: curSegments.map(segId => getRank(athleteRecord[segId], segId))
   });
@@ -33,12 +32,6 @@ const getRanking = (allTime, segments, leaderboards) => {
     .map(createRanks)
     .filter(obj => obj.ranks.some(x => x.effort));
 
-
-  // const summed = L.modify(
-  //   L.compose(L.values, "ranks"),
-  //   xs => xs.reduce((a, b) => a + b.score, 0),
-  //   leaderboardWithRanks
-  // );
 
   const summed = leaderboardWithRanks.map(({athleteName,ranks}) => ({
     athleteName,

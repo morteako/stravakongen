@@ -24,6 +24,7 @@ const Page = props => {
 
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
+  
 
   const queryParams = qs.parse(props.location.search);
 
