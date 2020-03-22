@@ -3,7 +3,7 @@ import { useStoreState } from "easy-peasy";
 import Table from "react-bootstrap/Table";
 import getRanking from "./ranking";
 import Row from "./Row";
-import SegmentLink from "./segmentLink";
+import SegmentLink from "./SegmentLink";
 import HeaderRow from "./HeaderRow";
 import { getSortingMode } from "./sorting";
 
