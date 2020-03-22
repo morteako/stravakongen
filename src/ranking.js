@@ -19,7 +19,7 @@ const getRanking = (allTime, segments, leaderboards) => {
 
   const getRank = (effort, segmentId) => {
     if (!effort) return {score : getNoEffortScore(segmentId) };
-    return {score : effort.rank, effort:true};
+    return {score : effort.rank, effort:true, start_date: effort.start_date};
   };
 
   const curSegments = segments.filter(segId => leaderboards[segId]);
@@ -35,6 +35,7 @@ const getRanking = (allTime, segments, leaderboards) => {
 
   const summed = leaderboardWithRanks.map(({athleteName,ranks}) => ({
     athleteName,
+    ranks,
     score : ranks.reduce((a, b) => a + b.score, 0)
   }))
   

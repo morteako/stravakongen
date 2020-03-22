@@ -29,7 +29,7 @@ const SegmentBoard = props => {
         leaderboard: x.data.entries
       });
     });
-  }, [segmentId, props.dateRange, club,accessToken]);
+  }, [segmentId, props.dateRange, club, accessToken]);
 
   useStoreActions(actions => actions.addLeaderboard)(payload);
 
