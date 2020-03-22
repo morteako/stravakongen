@@ -4,57 +4,55 @@
 }
 
 .entry_second {
-    background-color: silver;
-    opacity: 0.8;
+  background-color: silver;
+  opacity: 0.8;
 }
 
 .entry_third {
-    background-color: #cd7f32;
-    opacity: 0.7;
+  background-color: #cd7f32;
+  opacity: 0.7;
 }
 
 .entry_normal {
-    opacity: 1;
+  opacity: 1;
 }
 
 .button_row {
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .button {
-    color: #fc4c02;
-    background-color: #fc4c02;
-    margin : 0.1em;
+  color: #fc4c02;
+  background-color: #fc4c02;
+  margin: 0.1em;
 }
 
-
-
 .ranktext_td {
-    display:inline-block;
+  display: inline-block;
 }
 
 .ranktext_rank {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .ranktext_score {
-    font-weight: normal;
-    opacity: 0.7;
+  font-weight: normal;
+  opacity: 0.7;
 }
 
 .header {
-    color : #fc4c02;
-    /* text-align: center; */
+  color: #fc4c02;
+  /* text-align: center; */
 }
 
 .th {
-    text-align: center;
+  text-align: center;
 }
 
 .score {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .divider {
@@ -65,6 +63,6 @@
 }
 
 .entry_border {
-    color: red;
-    border: 50px solid green;
+  color: red;
+  border: 50px solid green;
 }

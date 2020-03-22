@@ -21,7 +21,12 @@ const store = createStore({
   addSegment: action((state, segment) => {
     if (!segment) return;
     const { name, distance, average_grade, activity_type } = segment;
-    state.segments[segment.id] = { name, distance, average_grade, activity_type };
+    state.segments[segment.id] = {
+      name,
+      distance,
+      average_grade,
+      activity_type
+    };
   }),
   addLeaderboard: action((state, payload) => {
     if (!payload) return;

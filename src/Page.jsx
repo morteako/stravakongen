@@ -7,8 +7,6 @@ import * as qs from "query-string";
 import { useAccesToken } from "./api";
 import Dropdowns from "./Dropdowns";
 
-
-
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
   const firstGroupAsDefault = groups[0];
@@ -18,8 +16,7 @@ const Page = props => {
 
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
-  const [sortMode, setSortMode] = React.useState({score:true});
-  
+  const [sortMode, setSortMode] = React.useState({ score: true });
 
   const queryParams = qs.parse(props.location.search);
 
@@ -33,28 +30,40 @@ const Page = props => {
     // console.log(error);
   }
 
-
   const segmentsFromGroup = Object.values(allSegments)
     .filter(seg => seg.groups[segmentGroup])
     .map(x => x.id);
 
   const currentSegments =
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
-  
+
   return (
     <div>
-      
-      <Dropdowns props={{currentSegments,sortMode,segmentGroup,dateRange, setDateRange, setSortMode, setSegmentGroup}} />
-      <Scoreboard sortingMode={sortMode} segments={currentSegments} dateRange={dateRange} />
-      {currentSegments.map((segId, ind) => (
-      <SegmentBoard
-        key={ind}
-        club={queryParams.club}
+      <Dropdowns
+        props={{
+          currentSegments,
+          sortMode,
+          segmentGroup,
+          dateRange,
+          setDateRange,
+          setSortMode,
+          setSegmentGroup
+        }}
+      />
+      <Scoreboard
+        sortingMode={sortMode}
+        segments={currentSegments}
         dateRange={dateRange}
-        segmentId={segId}
-      />))}
+      />
+      {currentSegments.map((segId, ind) => (
+        <SegmentBoard
+          key={ind}
+          club={queryParams.club}
+          dateRange={dateRange}
+          segmentId={segId}
+        />
+      ))}
     </div>
-    
   );
 };
 
