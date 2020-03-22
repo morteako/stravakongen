@@ -1,7 +1,5 @@
 import React from "react";
-// import styles from "./mystyle.module.css"
 import HeaderTh from "./HeaderTh";
-import { sortingModes } from "./sorting";
 
 
 const HeaderRow = props => {

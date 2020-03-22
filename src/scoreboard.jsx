@@ -9,17 +9,13 @@ import { getSortingMode } from "./sorting";
 
 
 const Scoreboard = props => {
-    const {sortingMode, segments, dateRange, setSegmentLeaderboards} = props;
+    const {sortingMode, segments, dateRange} = props;
 
     const state = useStoreState( state => state);
-
-    
-    // console.log(sortingMode)
 
     const storeSegments = state.segments;
     const allTime = state.athleteEfforts[dateRange];
     const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
-    // setSegmentLeaderboards(storeSegments)
 
     const segmentRowMapper = clicked => segments.map(segId => {
         const numAthletes = leaderboardsAllTime[segId] ? leaderboardsAllTime[segId].length : "";
@@ -38,11 +34,8 @@ const Scoreboard = props => {
         }
     );
     
-    const ranking = getRanking(allTime, segments,leaderboardsAllTime);
-    const segs = segments.map(x => storeSegments[x]) //.filter(x => segments.includes(x.id))
-    console.log("nam",storeSegments,segs);
-    const f = getSortingMode(sortingMode)(allTime);
-    ranking.sort(f)
+    const ranking = getRanking(allTime, segments,leaderboardsAllTime)
+        .sort(getSortingMode(sortingMode)(allTime));
 
     const dataRows = ranking.map(({athleteName,score,rankPos},ind) =>  
         <Row key={athleteName} args={[athleteName,score,allTime[athleteName],segments,rankPos]} />

@@ -1,17 +1,11 @@
 import React from "react";
-import SegmentBoard from "./segmentboard";
-import SortDropdownItem from "./SortDropdownItem";
-import Scoreboard from "./scoreboard";
 import { useStoreState } from "easy-peasy";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownDivider from "react-bootstrap/Dropdown";
 import styles from "./mystyle.module.css";
-import { groupEmojis, groups } from "./data/segments";
-import { allSegments } from "./data/segments";
-import * as qs from "query-string";
-import { useAccesToken } from "./api";
-import { getSortingName, getSortingMode } from "./sorting";
+import { groupEmojis } from "./data/segments";
+import { getSortingName } from "./sorting";
 
 const dateRangeTitle = {
     all: "Gjennom alle tider",
@@ -20,9 +14,7 @@ const dateRangeTitle = {
 
 const Dropdowns = ({props}) => {
     const {segmentGroup,dateRange,sortMode,currentSegments,setDateRange, setSortMode, setSegmentGroup} = props;
-    console.log(props,props.currentSegments)
-    console.log(currentSegments)
-
+    
     const dateRangeDropwdownItems = Object.entries(dateRangeTitle)
     .map(([k, v]) => (
       <Dropdown.Item

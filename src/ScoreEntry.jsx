@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./mystyle.module.css";
-import diff from "jest-diff";
 
 export const createScoreEntry = (effortData,segmentData,clicked,ind) => {
     const props = {...effortData,segmentData,clicked};
@@ -28,11 +27,11 @@ const isSetPastWeek = date => {
 
 const getSpeedInfo = (elapsedTimeInSecs, segmentData) => {
     if (!(segmentData && segmentData.distance)) return "";
-    if(segmentData.activity_type == "Ride") {
+    if(segmentData.activity_type === "Ride") {
         const kmH = segmentData.distance / (1000 * elapsedTimeInSecs/(60*60));
         return kmH.toFixed(1) + " km/t"
     } 
-    if(segmentData.activity_type == "Run") {
+    if(segmentData.activity_type === "Run") {
         const secKm = 1000 * elapsedTimeInSecs / segmentData.distance;
         return secToMMSS(secKm) + " min/km"
     }

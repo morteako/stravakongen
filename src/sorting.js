@@ -12,7 +12,7 @@ export const getSortingName = (arg,leaderboardsAllTime) => {
 }
 
 export const getSortingMode = arg => {
-    console.log(arg);
+    
     if(arg.name) return () => (a,b) => a.athleteName.localeCompare(b.athleteName);
     if(arg.score) return () => (a,b) => a.rankPos - b.rankPos;
     if(arg.segmentId) return all => (a,b) => {
