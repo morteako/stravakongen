@@ -1,24 +1,19 @@
 // import React from 'react';
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 
-
-
 // const nextUrlFunctions = {
 //     "all" : "year",
 //     "year" : "all"
 // };
 
-
-
 // function Page() {
-    
+
 //     const [urlFuncKey,setUrlFuncKey] = React.useState("all")
 
 //     const setNext = () => setUrlFuncKey(nextUrlFunctions[urlFuncKey])
-    
-//     const createSegmentBoard = seg => 
+
+//     const createSegmentBoard = seg =>
 //       <SegmentBoard dateRange={urlFuncKey} segment={seg} />
-    
 
 //   return (
 //     <DropdownButton
