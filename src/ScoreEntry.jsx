@@ -20,31 +20,31 @@ const secToMMSS = durationInSec => {
 }
 
 const isSetPastWeek = date => {
-    
     const diffTime = Math.abs(new Date() - new Date(date));
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
     return diffDays < 7;
 }
 
-const calcPace = (elapsedTimeInSecs, distanceInMeters) => {
-    // console.log(elapsedTimeInSecs,distanceInMeters)
-    const secKm = 1000 * elapsedTimeInSecs / distanceInMeters;
-    const secKmMMSS = secToMMSS(secKm);
-    console.log(secKm,secKmMMSS)
-    return secKmMMSS;
-    
 
+const getSpeedInfo = (elapsedTimeInSecs, segmentData) => {
+    if (!(segmentData && segmentData.distance)) return "";
+    if(segmentData.activity_type == "Ride") {
+        const kmH = segmentData.distance / (1000 * elapsedTimeInSecs/(60*60));
+        return kmH.toFixed(1) + " km/t"
+    } 
+    if(segmentData.activity_type == "Run") {
+        const secKm = 1000 * elapsedTimeInSecs / segmentData.distance;
+        return secToMMSS(secKm) + " min/km"
+    }
+    return ""
 }
 
 const ScoreEntry = props => {
     const {elapsed_time, start_date_local, rank, segmentData, clicked} = props;
-    console.log(segmentData)
     const date = start_date_local.substr(0,10).split("-").reverse().join(".");
     const elapsedTimeInSeconds = secToMMSS(elapsed_time);
     const text = `${elapsedTimeInSeconds} (#${rank})`;
-    const pace = segmentData && segmentData.distance 
-        ? calcPace(elapsed_time, segmentData.distance)
-        : "";
+    const speedInfo = getSpeedInfo(elapsed_time, segmentData)
 
     const entryClasses = {
         1:styles.entry_first,
@@ -58,7 +58,7 @@ const ScoreEntry = props => {
         <td className={scoreClass + borderClass}> 
             {text} 
             {' '}
-            <span>{clicked && date + " - " + pace + " min/km"}</span>
+            <span>{clicked && date + " - " + speedInfo}</span>
         </td>
     )
 };
