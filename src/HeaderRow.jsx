@@ -1,6 +1,8 @@
 import React from "react";
 // import styles from "./mystyle.module.css"
 import HeaderTh from "./HeaderTh";
+import { sortingModes } from "./sorting";
+
 
 const HeaderRow = props => {
     const {segmentRowMapper} = props;
@@ -11,7 +13,9 @@ const HeaderRow = props => {
         <tr onClick={() => setClicked(!clicked)}>
             <HeaderTh child={"Navn"}/>
             <HeaderTh child={"# (Poeng)"}/>
-            {segmentRowMapper(clicked).map(x => <HeaderTh key={x.props.segmentId} child={x}/>)}      
+            {segmentRowMapper(clicked).map(x => 
+                <HeaderTh key={x.props.segmentId} child={x}/>
+            )}      
         </tr>
     );
 };

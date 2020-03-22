@@ -1,10 +1,10 @@
-import * as L from "partial.lenses";
 import { groupBy } from "lodash";
 
 const fixSharedPosition = rankings => {
+  rankings.sort((a, b) => a.score - b.score);
   const indexed = rankings.map((obj, ind) => ({ ...obj, rankPos: ind }));
 
-  const grouped = Object.values(groupBy(indexed, x => x.ranks));
+  const grouped = Object.values(groupBy(indexed, x => x.score));
 
   const setNewRankPos = rankPos => obj => ({ ...obj, rankPos });
   const fixedRankPos = grouped.flatMap(group =>
@@ -19,30 +19,32 @@ const getRanking = (allTime, segments, leaderboards) => {
 
   const getRank = (effort, segmentId) => {
     if (!effort) return {score : getNoEffortScore(segmentId) };
-    return {score : effort.rank, effort:true};
+    return {score : effort.rank, effort:true, start_date: effort.start_date};
   };
 
-  const curSegments = Array.from(segments.filter(segId => leaderboards[segId]));
+  const curSegments = segments.filter(segId => leaderboards[segId]);
 
-  const createRanks = ([athlete_name, athleteRecord], ind) => ({
+  const createRanks = ([athlete_name, athleteRecord]) => ({
     athleteName: athlete_name,
     ranks: curSegments.map(segId => getRank(athleteRecord[segId], segId))
   });
-  const ranks = Object.entries(allTime)
+  const leaderboardWithRanks = Object.entries(allTime)
     .map(createRanks)
     .filter(obj => obj.ranks.some(x => x.effort));
 
 
-  const summed = L.modify(
-    L.compose(L.values, "ranks"),
-    xs => xs.reduce((a, b) => a + b.score, 0),
-    ranks
-  );
+  const summed = leaderboardWithRanks.map(({athleteName,ranks}) => ({
+    athleteName,
+    ranks,
+    score : ranks.reduce((a, b) => a + b.score, 0)
+  }))
+  
 
-  const summedArray = Object.entries(summed).map(([, value]) => value);
-  const sorted = [...summedArray].sort((a, b) => a.ranks - b.ranks);
-
-  return fixSharedPosition(sorted);
+  const summedArray = Object.entries(summed)
+    .map(([, value]) => value);
+    
+  
+  return fixSharedPosition(summedArray);
 };
 
 export default getRanking;

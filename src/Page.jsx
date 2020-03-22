@@ -1,6 +1,8 @@
 import React from "react";
 import SegmentBoard from "./segmentboard";
+import SortDropdownItem from "./SortDropdownItem";
 import Scoreboard from "./scoreboard";
+import { useStoreState } from "easy-peasy";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownDivider from "react-bootstrap/Dropdown";
@@ -9,11 +11,10 @@ import { groupEmojis, groups } from "./data/segments";
 import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./api";
+import { getSortingName, getSortingMode } from "./sorting";
+import Dropdowns from "./Dropdowns";
 
-const dateRangeTitle = {
-  all: "Gjennom alle tider",
-  year: "I år"
-};
+
 
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
@@ -24,6 +25,15 @@ const Page = props => {
 
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
+  const [sortMode, setSortMode] = React.useState({score:true});
+  const [leaderboardsAllTime, setLeaderboardsAllTime] = React.useState({});
+
+  console.log(sortMode)
+
+  
+
+  console.log(leaderboardsAllTime)
+  console.log(segmentGroup)
 
   const queryParams = qs.parse(props.location.search);
 
@@ -37,14 +47,6 @@ const Page = props => {
     // console.log(error);
   }
 
-  const createSegmentBoard = (segId, ind) => (
-    <SegmentBoard
-      key={ind}
-      club={queryParams.club}
-      dateRange={dateRange}
-      segmentId={segId}
-    />
-  );
 
   const segmentsFromGroup = Object.values(allSegments)
     .filter(seg => seg.groups[segmentGroup])
@@ -52,57 +54,21 @@ const Page = props => {
 
   const currentSegments =
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
-
-  const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map(
-    ([k, v]) => (
-      <Dropdown.Item
-        key={k}
-        className={styles.dropdown_item}
-        onClick={_ => setDateRange(k)}
-      >
-        {v}
-      </Dropdown.Item>
-    )
-  );
-
-  const mapGroupsToItems = groups =>
-    groups.map(group => (
-      <Dropdown.Item
-        key={group}
-        className={styles.dropdown_item}
-        onClick={() => setSegmentGroup(group)}
-      >
-        {group + " " + groupEmojis[group]}
-      </Dropdown.Item>
-    ));
-
-  const [mainGroup1, mainGroup2, ...restOfGroups] = Object.keys(groupEmojis);
-
+  
   return (
     <div>
-      <div className={styles.button_row}>
-        <DropdownButton
-          className={styles.button}
-          title={
-            "Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]
-          }
-        >
-          {mapGroupsToItems([mainGroup1, mainGroup2])}
-          <DropdownDivider className={styles.divider} />
-          {mapGroupsToItems(restOfGroups)}
-        </DropdownButton>
-        <DropdownButton
-          className={styles.button}
-          title={"Periode : " + dateRangeTitle[dateRange]}
-        >
-          {dateRangeDropwdownItems}
-        </DropdownButton>
-      </div>
-
-      <Scoreboard segments={currentSegments} dateRange={dateRange} />
-
-      {currentSegments.map(createSegmentBoard)}
+      
+      <Dropdowns props={{currentSegments,sortMode,segmentGroup,dateRange, setDateRange, setSortMode, setSegmentGroup}} />
+      <Scoreboard sortingMode={sortMode} segments={currentSegments} dateRange={dateRange} setSegmentLeaderboards={setLeaderboardsAllTime} />
+      {currentSegments.map((segId, ind) => (
+      <SegmentBoard
+        key={ind}
+        club={queryParams.club}
+        dateRange={dateRange}
+        segmentId={segId}
+      />))}
     </div>
+    
   );
 };
 
