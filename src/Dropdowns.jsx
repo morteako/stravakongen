@@ -48,8 +48,8 @@ const Dropdowns = ({props}) => {
 
 
   const sortModes = [
-    {name:true},
     {score:true},
+    {name:true},
     {newest:true} 
   ].concat(currentSegments.map(x => ({segmentId : x}))); 
 

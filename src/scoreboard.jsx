@@ -39,7 +39,8 @@ const Scoreboard = props => {
     );
     
     const ranking = getRanking(allTime, segments,leaderboardsAllTime);
-    // console.log(ranking);
+    const segs = segments.map(x => storeSegments[x]) //.filter(x => segments.includes(x.id))
+    console.log("nam",storeSegments,segs);
     const f = getSortingMode(sortingMode)(allTime);
     ranking.sort(f)
 

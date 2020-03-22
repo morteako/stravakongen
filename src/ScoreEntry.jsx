@@ -2,15 +2,11 @@ import React from "react";
 import styles from "./mystyle.module.css";
 import diff from "jest-diff";
 
-export const createScoreEntry = (data,clicked,ind) => {
-    const props = {...data,clicked};
-    return data 
+export const createScoreEntry = (effortData,segmentData,clicked,ind) => {
+    const props = {...effortData,segmentData,clicked};
+    return effortData 
         ? <ScoreEntry key={ind} {...props} /> 
         : <EmptyScoreEntry key={ind}/>;
-}
-
-const EmptyScoreEntry = _ => {
-    return <td>  </td>;
 }
 
 const secToMMSS = durationInSec => { 
@@ -30,11 +26,25 @@ const isSetPastWeek = date => {
     return diffDays < 7;
 }
 
+const calcPace = (elapsedTimeInSecs, distanceInMeters) => {
+    // console.log(elapsedTimeInSecs,distanceInMeters)
+    const secKm = 1000 * elapsedTimeInSecs / distanceInMeters;
+    const secKmMMSS = secToMMSS(secKm);
+    console.log(secKm,secKmMMSS)
+    return secKmMMSS;
+    
+
+}
+
 const ScoreEntry = props => {
-    const {elapsed_time, start_date_local,rank,clicked} = props;
+    const {elapsed_time, start_date_local, rank, segmentData, clicked} = props;
+    console.log(segmentData)
     const date = start_date_local.substr(0,10).split("-").reverse().join(".");
     const elapsedTimeInSeconds = secToMMSS(elapsed_time);
     const text = `${elapsedTimeInSeconds} (#${rank})`;
+    const pace = segmentData && segmentData.distance 
+        ? calcPace(elapsed_time, segmentData.distance)
+        : "";
 
     const entryClasses = {
         1:styles.entry_first,
@@ -48,9 +58,14 @@ const ScoreEntry = props => {
         <td className={scoreClass + borderClass}> 
             {text} 
             {' '}
-            <span>{clicked && date}</span>
+            <span>{clicked && date + " - " + pace + " min/km"}</span>
         </td>
     )
 };
+
+const EmptyScoreEntry = _ => {
+    return <td>  </td>;
+}
+
 
 export default ScoreEntry;
