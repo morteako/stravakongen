@@ -39,7 +39,7 @@ const Scoreboard = props => {
     });
 
   const ranking = getRanking(allTime, segments, leaderboardsAllTime).sort(
-    getSortingMode(sortingMode)(allTime)
+    getSortingMode(sortingMode, segments, allTime)
   );
 
   const dataRows = ranking.map(({ athleteName, score, rankPos }, ind) => (
