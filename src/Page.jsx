@@ -1,6 +1,6 @@
 import React from "react";
 import SegmentBoard from "./segmentboard";
-import Scoreboard from "./scoreboard";
+import Scoreboard from "./Scoreboard";
 import { groupEmojis, groups } from "./data/segments";
 import { allSegments } from "./data/segments";
 import * as qs from "query-string";
