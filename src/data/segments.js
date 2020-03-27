@@ -3,72 +3,73 @@ export const allSegments = {
     id: 1942901,
     name: "Tryvann",
     groups: {
-      "Klatrekongen Vest": 1,
-      Klatrekongen: 1,
-      AllRoundern: 1,
-      Tryvanndobbelen: 1
+      "klatrekongen-vest": 1,
+      klatrekongen: 1,
+      allroundern: 1,
+      tryvanndobbelen: 1
     }
   },
   4252879: {
     id: 4252879,
     name: "Olaf Bulls vei",
     groups: {
-      "Klatrekongen Vest": 1
+      "klatrekongen-vest": 1
     }
   },
   660072: {
     id: 660072,
     name: "Grefsenkollen",
     groups: {
-      "Klatrekongen Vest": 1,
-      "Klatrekongen Øst": 1,
-      Klatrekongen: 1,
-      AllRoundern: 1
+      "klatrekongen-vest": 1,
+      "Klatrekongen-ost": 1,
+      klatrekongen: 1,
+      allroundern: 1
     }
   },
   632847: {
     id: 632847,
     name: "Kongsveien",
     groups: {
-      Klatrekongen: 1,
-      "Klatrekongen Øst": 1
+      klatrekongen: 1,
+      "klatrekongen-ost": 1
     }
   },
   666298: {
     id: 666298,
     name: "Svartskogbakken",
     groups: {
-      "Klatrekongen Øst": 1
+      "klatrekongen-ost": 1
     }
   },
   2783427: {
     id: 2783427,
     name: "Sognsvann motsols, strand til strand",
     groups: {
-      Løpekongen: 1,
-      AllRoundern: 1
+      lopekongen: 1,
+      allroundern: 1
     }
   },
   2553283: {
     id: 2553283,
     name: "Tour de Finance løp",
     groups: {
-      Løpekongen: 1
+      lopekongen: 1,
+      breaking: 1
     }
   },
   1557103: {
     id: 1557103,
     name: "Vettakollen opp langs eggen 2",
     groups: {
-      Løpekongen: 1,
-      AllRoundern: 1
+      lopekongen: 1,
+      allroundern: 1
     }
   },
   5102820: {
     id: 5102820,
     name: "Holmenkollveien",
     groups: {
-      Tryvanndobbelen: 1
+      tryvanndobbelen: 1
     }
   },
   9358707: {
@@ -89,35 +90,35 @@ export const allSegments = {
     id: 8059590,
     name: "Grefsenkollen ned",
     groups: {
-      Utforkongen: 1
+      utforkongen: 1
     }
   },
   14733934: {
     id: 14733934,
     name: "Tryvann ned",
     groups: {
-      Utforkongen: 1
+      utforkongen: 1
     }
   },
   6890951: {
     id: 6890951,
     name: "Greveveien downhill",
     groups: {
-      Utforkongen: 1
+      utforkongen: 1
     }
   },
   666794: {
     id: 666794,
     name: "Sørkedalen",
     groups: {
-      Tempokongen: 1
+      tempokongen: 1
     }
   },
   1229519: {
     id: 1229519,
     name: "Maridalen",
     groups: {
-      Tempokongen: 1
+      tempokongen: 1
     }
   }
 };
@@ -127,17 +128,63 @@ const runE = "🏃🏻‍♂️";
 const bothE = bikeE + " " + runE;
 const downhillE = "⬇️ " + "😵 " + "⚰️";
 const bikeDownhillE = bikeE + " " + downhillE;
-
-export const groupEmojis = {
-  Klatrekongen: bikeE,
-  Løpekongen: runE,
-  "Klatrekongen Vest": bikeE,
-  "Klatrekongen Øst": bikeE,
-  Tempokongen: bikeE,
-  Utforkongen: bikeDownhillE,
-  // "Kikut Sykkel": bikeE,
-  Tryvanndobbelen: bothE,
-  AllRoundern: bothE
+// const emojis = {
+//   bike : "🚴🏼‍♂️",
+//   run : "🏃🏻‍♂️",
+//   bikeRun : emojis.bike + " " + emojis.run,
+//   downhill : "⬇️ " + "😵 " + "⚰️",
+//   bikeDownhill : bike
+// }
+export const allGroups = {
+  klatrekongen: {
+    navn: "Klatrekongen",
+    emoji: bikeE
+  },
+  breaking: {
+    navn: "Breaking Marathon Limits",
+    emoji: bikeE
+  },
+  lopekongen: {
+    navn: "Løpekongen",
+    emoji: runE
+  },
+  "klatrekongen-vest": {
+    navn: "Klatrekongen Vest",
+    emoji: bikeE
+  },
+  "klatrekongen-ost": {
+    navn: "Klatrekongen Øst",
+    emoji: bikeE
+  },
+  tempokongen: {
+    navn: "Tempokongen",
+    emoji: bikeE
+  },
+  utforkongen: {
+    navn: "Utforkongen",
+    emoji: bikeDownhillE
+  },
+  tryvanndobbelen: {
+    navn: "Tryvanndobbel",
+    emoji: bothE
+  },
+  allroundern: {
+    navn: "Allrounder'n",
+    emoji: bothE
+  }
 };
 
-export const groups = Object.keys(groupEmojis);
+// export const groupEmojis = {
+//   Klatrekongen: bikeE,
+//   Løpekongen: runE,
+//   "Klatrekongen Vest": bikeE,
+//   "Klatrekongen Øst": bikeE,
+//   Tempokongen: bikeE,
+//   Utforkongen: bikeDownhillE,
+//   // "Kikut Sykkel": bikeE,
+//   Tryvanndobbelen: bothE,
+//   AllRoundern: bothE,
+//   breaking: runE
+// };
+
+// export const groupSlugs = Object.keys(groups);

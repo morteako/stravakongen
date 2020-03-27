@@ -1,7 +1,7 @@
 import React from "react";
 import SegmentBoard from "./segmentboard";
 import Scoreboard from "./Scoreboard";
-import { groupEmojis, groups } from "./data/segments";
+import { allGroups } from "./data/segments";
 import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./api";
@@ -9,8 +9,9 @@ import Dropdowns from "./Dropdowns";
 
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
-  const firstGroupAsDefault = groups[0];
-  const startSegmentGroup = groupEmojis[segmentGroupsFromUrl]
+  console.log(segmentGroupsFromUrl);
+  const firstGroupAsDefault = Object.keys(allGroups)[0];
+  const startSegmentGroup = allGroups[segmentGroupsFromUrl]
     ? segmentGroupsFromUrl
     : firstGroupAsDefault;
 
