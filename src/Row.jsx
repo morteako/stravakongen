@@ -9,15 +9,15 @@ const Row = props => {
 
   const state = useStoreState(state => state);
   const medals = {
-    0: "🥇",
-    1: "🥈",
-    2: "🥉"
+    0: " 🥇",
+    1: " 🥈",
+    2: " 🥉"
   };
   return (
     <tr onClick={flipClicked}>
       <td>
         <b>{athleteName}</b>
-        {medals[rankPos]}{" "}
+        {medals[rankPos]}
       </td>
       <td className={styles.ranktext_header}>
         <span className={styles.ranktext_rank}>{rankPos + 1}</span>
