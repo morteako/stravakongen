@@ -4,19 +4,20 @@ import { createScoreEntry } from "./ScoreEntry";
 import { useStoreState } from "easy-peasy";
 
 const Row = props => {
-  // const [clicked, setClicked] = React.useState(false);
-
   const [athleteName, score, athleteRecord, segments, rankPos] = props.args;
   const { clicked, flipClicked } = props;
 
   const state = useStoreState(state => state);
-
+  const medals = {
+    0: "🥇",
+    1: "🥈",
+    2: "🥉"
+  };
   return (
     <tr onClick={flipClicked}>
       <td>
-        <b>{athleteName}</b> {rankPos === 0 && "🥇"}
-        {rankPos === 1 && "🥈"}
-        {rankPos === 2 && "🥉"}
+        <b>{athleteName}</b>
+        {medals[rankPos]}{" "}
       </td>
       <td className={styles.ranktext_header}>
         <span className={styles.ranktext_rank}>{rankPos + 1}</span>

@@ -38,13 +38,17 @@ const getSpeedInfo = (elapsedTimeInSecs, segmentData) => {
   return "";
 };
 
-const ScoreEntry = props => {
-  const { elapsed_time, start_date_local, rank, segmentData, clicked } = props;
-  const date = start_date_local
+const formatDate = date =>
+  date
     .substr(0, 10)
     .split("-")
     .reverse()
     .join(".");
+
+const ScoreEntry = props => {
+  const { elapsed_time, start_date_local, rank, segmentData, clicked } = props;
+  const date = formatDate(start_date_local);
+
   const elapsedTimeInSeconds = secToMMSS(elapsed_time);
   const text = `${elapsedTimeInSeconds} (#${rank})`;
   const speedInfo = getSpeedInfo(elapsed_time, segmentData);
