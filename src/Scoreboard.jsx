@@ -16,6 +16,9 @@ const Scoreboard = props => {
   const allTime = state.athleteEfforts[dateRange];
   const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
 
+  const [clicked, setClicked] = React.useState(false);
+  const flipClicked = () => setClicked(!clicked);
+
   const segmentRowMapper = clicked =>
     segments.map(segId => {
       const numAthletes = leaderboardsAllTime[segId]
@@ -46,6 +49,8 @@ const Scoreboard = props => {
     <Row
       key={athleteName}
       args={[athleteName, score, allTime[athleteName], segments, rankPos]}
+      clicked={clicked}
+      flipClicked={() => flipClicked()}
     />
   ));
 
