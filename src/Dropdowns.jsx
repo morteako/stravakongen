@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownDivider from "react-bootstrap/Dropdown";
 import styles from "./mystyle.module.css";
-import { groupEmojis } from "./data/segments";
+import { allGroups } from "./data/segments";
 import { getSortingName } from "./sorting";
 
 const dateRangeTitle = {
@@ -35,16 +35,19 @@ const Dropdowns = ({ props }) => {
     )
   );
 
-  const mapGroupsToItems = groups =>
-    groups.map(group => (
+  const mapGroupsToItems = groups => {
+    return groups.map(groupSlug => (
       <Dropdown.Item
-        key={group}
+        key={groupSlug}
         className={styles.dropdown_item}
-        onClick={() => setSegmentGroup(group)}
+        onClick={() => setSegmentGroup(groupSlug)}
       >
-        {group + " " + groupEmojis[group]}
+        {allGroups[groupSlug].navn +
+          " " +
+          (allGroups[groupSlug] && allGroups[groupSlug].emoji)}
       </Dropdown.Item>
     ));
+  };
 
   const sortModes = [{ score: true }, { name: true }, { newest: true }].concat(
     currentSegments.map(x => ({ segmentId: x }))
@@ -62,17 +65,22 @@ const Dropdowns = ({ props }) => {
     </Dropdown.Item>
   ));
 
-  const [mainGroup1, mainGroup2, ...restOfGroups] = Object.keys(groupEmojis);
+  const restOfGroups = Object.keys(allGroups).filter(
+    x => !["klatrekongen", "lopekongen", "bml"].includes(x)
+  );
 
   return (
     <div className={styles.button_row}>
       <DropdownButton
         className={styles.button}
         title={
-          "Segmentgruppe : " + segmentGroup + " " + groupEmojis[segmentGroup]
+          "Segmentgruppe : " +
+          allGroups[segmentGroup].navn +
+          " " +
+          allGroups[segmentGroup].emoji
         }
       >
-        {mapGroupsToItems([mainGroup1, mainGroup2])}
+        {mapGroupsToItems(["bml", "klatrekongen", "lopekongen"])}
         <DropdownDivider className={styles.divider} />
         {mapGroupsToItems(restOfGroups)}
       </DropdownButton>
