@@ -34,10 +34,8 @@ const Dropdowns = ({ props }) => {
       </Dropdown.Item>
     )
   );
-  console.log(allGroups);
-  console.log(allGroups["klatrekongen"].emoji);
+
   const mapGroupsToItems = groups => {
-    groups.map(x => console.log("hei" + allGroups[x].emoji));
     return groups.map(groupSlug => (
       <Dropdown.Item
         key={groupSlug}
@@ -67,7 +65,9 @@ const Dropdowns = ({ props }) => {
     </Dropdown.Item>
   ));
 
-  const [mainGroup1, mainGroup2, ...restOfGroups] = Object.keys(allGroups);
+  const restOfGroups = Object.keys(allGroups).filter(
+    x => !["klatrekongen", "lopekongen", "bml"].includes(x)
+  );
 
   return (
     <div className={styles.button_row}>
@@ -80,7 +80,7 @@ const Dropdowns = ({ props }) => {
           allGroups[segmentGroup].emoji
         }
       >
-        {mapGroupsToItems([mainGroup1, mainGroup2])}
+        {mapGroupsToItems(["bml", "klatrekongen", "lopekongen"])}
         <DropdownDivider className={styles.divider} />
         {mapGroupsToItems(restOfGroups)}
       </DropdownButton>

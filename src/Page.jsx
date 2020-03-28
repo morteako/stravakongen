@@ -10,10 +10,10 @@ import Dropdowns from "./Dropdowns";
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
   console.log(segmentGroupsFromUrl);
-  const firstGroupAsDefault = Object.keys(allGroups)[0];
+  const defaultSegmentGroup = "bml";
   const startSegmentGroup = allGroups[segmentGroupsFromUrl]
     ? segmentGroupsFromUrl
-    : firstGroupAsDefault;
+    : defaultSegmentGroup;
 
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);

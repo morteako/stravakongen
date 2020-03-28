@@ -1,3 +1,5 @@
+import { Emojis } from "./emojis";
+
 export const allSegments = {
   1942901: {
     id: 1942901,
@@ -54,7 +56,31 @@ export const allSegments = {
     name: "Tour de Finance løp",
     groups: {
       lopekongen: 1,
-      breaking: 1
+      bml: 1
+    }
+  },
+  657002: {
+    id: 657002,
+    groups: {
+      bml: 1
+    }
+  },
+  21317574: {
+    id: 21317574,
+    groups: {
+      bml: 1
+    }
+  },
+  1032853: {
+    id: 1032853,
+    groups: {
+      bml: 1
+    }
+  },
+  11861324: {
+    id: 11861324,
+    groups: {
+      bml: 1
     }
   },
   1557103: {
@@ -123,68 +149,41 @@ export const allSegments = {
   }
 };
 
-const bikeE = "🚴🏼‍♂️";
-const runE = "🏃🏻‍♂️";
-const bothE = bikeE + " " + runE;
-const downhillE = "⬇️ " + "😵 " + "⚰️";
-const bikeDownhillE = bikeE + " " + downhillE;
-// const emojis = {
-//   bike : "🚴🏼‍♂️",
-//   run : "🏃🏻‍♂️",
-//   bikeRun : emojis.bike + " " + emojis.run,
-//   downhill : "⬇️ " + "😵 " + "⚰️",
-//   bikeDownhill : bike
-// }
 export const allGroups = {
   klatrekongen: {
     navn: "Klatrekongen",
-    emoji: bikeE
+    emoji: Emojis.bike
   },
-  breaking: {
+  bml: {
     navn: "Breaking Marathon Limits",
-    emoji: bikeE
+    emoji: Emojis.run
   },
   lopekongen: {
     navn: "Løpekongen",
-    emoji: runE
+    emoji: Emojis.run
   },
   "klatrekongen-vest": {
     navn: "Klatrekongen Vest",
-    emoji: bikeE
+    emoji: Emojis.bike
   },
   "klatrekongen-ost": {
     navn: "Klatrekongen Øst",
-    emoji: bikeE
+    emoji: Emojis.bike
   },
   tempokongen: {
     navn: "Tempokongen",
-    emoji: bikeE
+    emoji: Emojis.bike
   },
   utforkongen: {
     navn: "Utforkongen",
-    emoji: bikeDownhillE
+    emoji: Emojis.bikeDownhill
   },
   tryvanndobbelen: {
     navn: "Tryvanndobbel",
-    emoji: bothE
+    emoji: Emojis.both
   },
   allroundern: {
     navn: "Allrounder'n",
-    emoji: bothE
+    emoji: Emojis.both
   }
 };
-
-// export const groupEmojis = {
-//   Klatrekongen: bikeE,
-//   Løpekongen: runE,
-//   "Klatrekongen Vest": bikeE,
-//   "Klatrekongen Øst": bikeE,
-//   Tempokongen: bikeE,
-//   Utforkongen: bikeDownhillE,
-//   // "Kikut Sykkel": bikeE,
-//   Tryvanndobbelen: bothE,
-//   AllRoundern: bothE,
-//   breaking: runE
-// };
-
-// export const groupSlugs = Object.keys(groups);
