@@ -1,0 +1,6 @@
+h1 {
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 80px;
+  margin-bottom: 30px;
+}

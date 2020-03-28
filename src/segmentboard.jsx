@@ -14,7 +14,7 @@ const SegmentBoard = props => {
   const [payload, setPayload] = useState(null);
   const segmentId = props.segmentId;
 
-  const club = props.club || clubs.bekk;
+  const club = props.club || clubs.bekk.id;
 
   const accessToken = useStoreState(state => state.accessToken);
 

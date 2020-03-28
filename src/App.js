@@ -60,7 +60,7 @@ const App = () => {
   zoomOutMobile();
   return (
     <StoreProvider store={store}>
-      <Router>
+      <Router basename="stravakongen/">
         <Switch>
           <Route path={"/:segmentGroup"} component={Page} />
           <Route path={"/"} component={Page} />

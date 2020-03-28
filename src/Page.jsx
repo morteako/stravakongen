@@ -6,6 +6,8 @@ import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./api";
 import Dropdowns from "./Dropdowns";
+import { clubs, getClubName } from "./data/ids";
+import "./Page.css";
 
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
@@ -37,8 +39,14 @@ const Page = props => {
   const currentSegments =
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
 
+  const club = queryParams.club || clubs.bekk.id;
+
   return (
     <div>
+      <div>
+        <h1>Stravakongen</h1>
+        <h2>{getClubName(club)}</h2>
+      </div>
       <Dropdowns
         props={{
           currentSegments,
