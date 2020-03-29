@@ -9,7 +9,7 @@ import Dropdowns from "./Dropdowns";
 
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
-  console.log(segmentGroupsFromUrl);
+
   const defaultSegmentGroup = "bml";
   const startSegmentGroup = allGroups[segmentGroupsFromUrl]
     ? segmentGroupsFromUrl
