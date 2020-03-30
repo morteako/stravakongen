@@ -1,11 +1,11 @@
 import React from "react";
 import { useStoreState } from "easy-peasy";
 import Table from "react-bootstrap/Table";
-import getRanking from "./ranking";
+import getRanking from "./calculation/ranking";
 import Row from "./Row";
 import SegmentLink from "./SegmentLink";
 import HeaderRow from "./HeaderRow";
-import { getSortingMode } from "./sorting";
+import { getSortingMode } from "./calculation/sorting";
 import { allSegments } from "./data/segments";
 
 const Scoreboard = props => {

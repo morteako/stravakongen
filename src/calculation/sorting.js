@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { allSegments } from "./data/segments";
+import { allSegments } from "../data/segments";
 
 export const getSortingName = (arg, leaderboardsAllTime, clicked) => {
   if (arg.name) return "Navn";

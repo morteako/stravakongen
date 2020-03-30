@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import * as Api from "./api";
+import { useState, useEffect } from "react";
+import * as Api from "./calculation/api";
 import { useStoreActions, useStoreState } from "easy-peasy";
-import * as qs from "query-string";
 import { clubs } from "./data/ids";
 
 const urlFunctions = {
@@ -9,7 +8,7 @@ const urlFunctions = {
   year: Api.createSegmentLeaderboardClubThisYear
 };
 
-const SegmentBoard = props => {
+const Segmentboard = props => {
   const [segmentPayload, setSegmentPayload] = useState(null);
   const [payload, setPayload] = useState(null);
   const segmentId = props.segmentId;
@@ -47,4 +46,4 @@ const SegmentBoard = props => {
   return null;
 };
 
-export default SegmentBoard;
+export default Segmentboard;

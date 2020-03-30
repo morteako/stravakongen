@@ -5,7 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownDivider from "react-bootstrap/Dropdown";
 import styles from "./mystyle.module.css";
 import { allGroups } from "./data/segments";
-import { getSortingName } from "./sorting";
+import { getSortingName } from "./calculation/sorting";
 
 const dateRangeTitle = {
   all: "Gjennom alle tider",
