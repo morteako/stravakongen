@@ -17,10 +17,18 @@
   opacity: 1;
 }
 
-.button_row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+@media (pointer: none), (pointer: coarse) {
+  .button_row {
+    display: flex;
+  }
+}
+
+@media (pointer: fine) {
+  .button_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .button {
