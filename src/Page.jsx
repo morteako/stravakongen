@@ -6,7 +6,6 @@ import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./calculation/api";
 import Dropdowns from "./Dropdowns";
-import { useEffect } from "react";
 
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
@@ -39,19 +38,6 @@ const Page = props => {
 
   const currentSegments =
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
-
-  useEffect(
-    () =>
-      currentSegments.map((segId, ind) => (
-        <SegmentBoard
-          key={ind}
-          club={queryParams.club}
-          dateRange={dateRange}
-          segmentId={segId}
-        />
-      )),
-    []
-  );
 
   return (
     <div>

@@ -14,8 +14,6 @@ const SegmentLink = props => {
     clicked
   } = props;
 
-  const segmentName = providedSegmentName || realSegmentName;
-
   const distanceOneDec = Math.round((distance / 1000) * 10) / 10;
   const prettyDistance = distanceOneDec + "km";
   const prettyAverageGrade = averageGrade;

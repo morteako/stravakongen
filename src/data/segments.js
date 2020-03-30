@@ -180,10 +180,10 @@ export const allGroups = {
   },
   tryvanndobbelen: {
     navn: "Tryvanndobbel",
-    emoji: Emojis.both
+    emoji: Emojis.bikeRun
   },
   allroundern: {
     navn: "Allrounder'n",
-    emoji: Emojis.both
+    emoji: Emojis.bikeRun
   }
 };
