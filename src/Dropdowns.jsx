@@ -57,7 +57,7 @@ const Dropdowns = ({ props }) => {
 
   const storeSegments = useStoreState(state => state.segments);
 
-  const sortDropdownItems = sortModes.map(sortMode => (
+  const [points, name, newest, ...segments] = sortModes.map(sortMode => (
     <Dropdown.Item
       key={getSortingName(sortMode, storeSegments)}
       className={styles.dropdown_item}
@@ -66,6 +66,10 @@ const Dropdowns = ({ props }) => {
       {getSortingName(sortMode, storeSegments, segmentRowClicked)}
     </Dropdown.Item>
   ));
+
+  const divider = <DropdownDivider className={styles.divider} />;
+
+  const sortDropdownItems = [points, name, newest, divider, ...segments];
 
   const restOfGroups = Object.keys(allGroups).filter(
     x => !["klatrekongen", "lopekongen", "bml"].includes(x)
@@ -83,7 +87,7 @@ const Dropdowns = ({ props }) => {
         }
       >
         {mapGroupsToItems(["bml", "klatrekongen", "lopekongen"])}
-        <DropdownDivider className={styles.divider} />
+        {divider}
         {mapGroupsToItems(restOfGroups)}
       </DropdownButton>
       <DropdownButton
