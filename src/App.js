@@ -14,7 +14,15 @@ const store = createStore({
     year: {}
   },
   segments: {},
+  segmentRowClicked: false,
+  leaderboardClicked: false,
 
+  setSegmentRowClicked: action((state, clicked) => {
+    state.segmentRowClicked = clicked;
+  }),
+  setLeaderboardClicked: action((state, clicked) => {
+    state.leaderboardClicked = clicked;
+  }),
   addAccessToken: action((state, acces_token) => {
     if (acces_token) state.accessToken = acces_token;
   }),

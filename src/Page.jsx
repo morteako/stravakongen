@@ -18,6 +18,7 @@ const Page = props => {
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
   const [sortMode, setSortMode] = React.useState({ score: true });
+  const [clicked, setClicked] = React.useState(false);
 
   const queryParams = qs.parse(props.location.search);
 
@@ -48,13 +49,16 @@ const Page = props => {
           dateRange,
           setDateRange,
           setSortMode,
-          setSegmentGroup
+          setSegmentGroup,
+          clicked
         }}
       />
       <Scoreboard
         sortingMode={sortMode}
         segments={currentSegments}
         dateRange={dateRange}
+        clicked={clicked}
+        setClicked={setClicked}
       />
       {currentSegments.map((segId, ind) => (
         <SegmentBoard

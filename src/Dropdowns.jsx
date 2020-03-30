@@ -23,6 +23,8 @@ const Dropdowns = ({ props }) => {
     setSegmentGroup
   } = props;
 
+  const { segmentRowClicked } = useStoreState(state => state);
+
   const dateRangeDropwdownItems = Object.entries(dateRangeTitle).map(
     ([k, v]) => (
       <Dropdown.Item
@@ -61,7 +63,7 @@ const Dropdowns = ({ props }) => {
       className={styles.dropdown_item}
       onClick={() => setSortMode(sortMode)}
     >
-      {getSortingName(sortMode, storeSegments)}
+      {getSortingName(sortMode, storeSegments, segmentRowClicked)}
     </Dropdown.Item>
   ));
 
@@ -92,7 +94,10 @@ const Dropdowns = ({ props }) => {
       </DropdownButton>
       <DropdownButton
         className={styles.button}
-        title={"Sortering : " + getSortingName(sortMode, storeSegments)}
+        title={
+          "Sortering : " +
+          getSortingName(sortMode, storeSegments, segmentRowClicked)
+        }
       >
         {sortDropdownItems}
       </DropdownButton>

@@ -1,14 +1,20 @@
 import _ from "lodash";
+import { allSegments } from "./data/segments";
 
-export const getSortingName = (arg, leaderboardsAllTime) => {
+export const getSortingName = (arg, leaderboardsAllTime, clicked) => {
   if (arg.name) return "Navn";
   if (arg.score) return "Poeng";
   if (arg.segmentId) {
-    const name =
+    const realName =
       leaderboardsAllTime &&
       leaderboardsAllTime[arg.segmentId] &&
       leaderboardsAllTime[arg.segmentId].name;
-    return name || arg.segmentId;
+    const providedName =
+      allSegments &&
+      allSegments[arg.segmentId] &&
+      allSegments[arg.segmentId].name;
+    const realNameIfClicked = clicked && realName;
+    return realNameIfClicked || providedName || realName || arg.segmentId;
   }
   if (arg.newest) return "Nyeste oppføring";
 };
