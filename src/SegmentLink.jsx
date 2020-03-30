@@ -22,7 +22,11 @@ const SegmentLink = props => {
     ? realSegmentName
     : providedSegmentName || realSegmentName;
   return (
-    <a className={styles.header} href={segmentUrl + segmentId}>
+    <a
+      className={styles.header}
+      href={segmentUrl + segmentId}
+      onClick={event => event.stopPropagation()}
+    >
       {name} {clicked && extraInfo}
     </a>
   );
