@@ -9,7 +9,7 @@ import { getSortingMode } from "./sorting";
 import { allSegments } from "./data/segments";
 
 const Scoreboard = props => {
-  const { sortingMode, segments, dateRange } = props;
+  const { sortingMode, segments, dateRange, clicked, setClicked } = props;
 
   const state = useStoreState(state => state);
 
@@ -17,7 +17,6 @@ const Scoreboard = props => {
   const allTime = state.athleteEfforts[dateRange];
   const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
 
-  const [clicked, setClicked] = React.useState(false);
   const flipClicked = () => setClicked(!clicked);
 
   const segmentRowMapper = clicked =>
@@ -27,16 +26,14 @@ const Scoreboard = props => {
         : "";
       const providedName = allSegments[segId] && allSegments[segId].name;
       const stravaName = storeSegments[segId] && storeSegments[segId].name;
-      const displayedSegmentName = clicked
-        ? stravaName
-        : providedName || stravaName;
 
       return (
         <SegmentLink
           key={segId}
           segmentId={segId}
           numAthletes={numAthletes}
-          segmentName={displayedSegmentName}
+          realSegmentName={stravaName}
+          providedSegmentName={providedName}
           distance={storeSegments[segId] && storeSegments[segId].distance}
           averageGrade={
             storeSegments[segId] && storeSegments[segId].average_grade
