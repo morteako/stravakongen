@@ -6,8 +6,9 @@ import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./calculation/api";
 import Dropdowns from "./Dropdowns";
-import useLocalStorage, { writeStorage } from "@rehooks/local-storage";
+import { writeStorage } from "@rehooks/local-storage";
 import { useEffect } from "react";
+import { getClub } from "./data/clubs";
 
 const Page = props => {
   const lsSegmentGroup = props.segmentGroup;
@@ -37,14 +38,15 @@ const Page = props => {
     // console.log(error);
   }
 
-  const [lsClub] = useLocalStorage("club");
-
   const segmentsFromGroup = Object.values(allSegments)
     .filter(seg => seg.groups[segmentGroup])
     .map(x => x.id);
 
   const currentSegments =
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
+
+  const club = getClub(queryParams.club, props.lsClub);
+  writeStorage("club", club);
 
   return (
     <div>
@@ -57,7 +59,8 @@ const Page = props => {
           setDateRange,
           setSortMode,
           setSegmentGroup,
-          clicked
+          clicked,
+          club
         }}
       />
       <Scoreboard
@@ -70,8 +73,7 @@ const Page = props => {
       {currentSegments.map((segId, ind) => (
         <SegmentBoard
           key={ind}
-          club={queryParams.club}
-          lsClub={lsClub}
+          club={club}
           dateRange={dateRange}
           segmentId={segId}
         />

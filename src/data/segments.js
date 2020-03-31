@@ -1,4 +1,5 @@
 import { Emojis } from "./emojis";
+import { clubs } from "./clubs";
 
 export const allSegments = {
   1942901: {
@@ -149,41 +150,65 @@ export const allSegments = {
   }
 };
 
+export const types = {
+  cycling: "cycling",
+  running: "running",
+  downhill: "downhill",
+  climbing: "climbing"
+};
+
+export const filterGroupsOnTypes = club => {
+  console.log(club);
+  if (!club) return allGroups;
+  return Object.keys(allGroups).filter(group =>
+    allGroups[group].types.every(type => club.types.includes(type))
+  );
+};
+
 export const allGroups = {
   klatrekongen: {
     navn: "Klatrekongen",
-    emoji: Emojis.bike
+    emoji: Emojis.bike,
+    types: [types.cycling, types.climbing]
   },
   bml: {
     navn: "Breaking Marathon Limits",
-    emoji: Emojis.run
+    emoji: Emojis.run,
+    types: [types.running]
   },
   lopekongen: {
     navn: "Løpekongen",
-    emoji: Emojis.run
+    emoji: Emojis.run,
+    types: [types.running]
   },
   "klatrekongen-vest": {
     navn: "Klatrekongen Vest",
-    emoji: Emojis.bike
+    emoji: Emojis.bike,
+    types: [types.cycling, types.climbing]
   },
   "klatrekongen-ost": {
     navn: "Klatrekongen Øst",
-    emoji: Emojis.bike
+    emoji: Emojis.bike,
+    types: [types.cycling, types.climbing]
   },
   tempokongen: {
     navn: "Tempokongen",
-    emoji: Emojis.bike
+    emoji: Emojis.bike,
+    types: [types.cycling]
   },
   utforkongen: {
     navn: "Utforkongen",
-    emoji: Emojis.bikeDownhill
+    emoji: Emojis.bikeDownhill,
+    types: [types.cycling, types.downhill]
   },
   tryvanndobbelen: {
     navn: "Tryvanndobbel",
-    emoji: Emojis.bikeRun
+    emoji: Emojis.bikeRun,
+    types: [types.cycling, types.running, types.climbing]
   },
   allroundern: {
     navn: "Allrounder'n",
-    emoji: Emojis.bikeRun
+    emoji: Emojis.bikeRun,
+    types: [types.cycling, types.running]
   }
 };
