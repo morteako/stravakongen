@@ -6,6 +6,7 @@ import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./calculation/api";
 import Dropdowns from "./Dropdowns";
+import useLocalStorage from "@rehooks/local-storage";
 
 const Page = props => {
   const segmentGroupsFromUrl = props.match.params.segmentGroup;
@@ -31,6 +32,9 @@ const Page = props => {
   } catch (error) {
     // console.log(error);
   }
+
+  console.log(queryParams);
+  const [lsClub] = useLocalStorage("club");
 
   const segmentsFromGroup = Object.values(allSegments)
     .filter(seg => seg.groups[segmentGroup])
@@ -64,6 +68,7 @@ const Page = props => {
         <SegmentBoard
           key={ind}
           club={queryParams.club}
+          lsClub={lsClub}
           dateRange={dateRange}
           segmentId={segId}
         />

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://morteako.github.io/stravakongen/",
   "dependencies": {
+    "@rehooks/local-storage": "^2.3.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "easy-peasy": "^3.3.0",

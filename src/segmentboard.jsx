@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import * as Api from "./calculation/api";
 import { useStoreActions, useStoreState } from "easy-peasy";
-import { clubs } from "./data/clubs";
+import { getClub } from "./data/clubs";
+import { writeStorage } from "@rehooks/local-storage";
 
 const urlFunctions = {
   all: Api.createSegmentLeaderboardClubFull,
@@ -13,8 +14,8 @@ const Segmentboard = props => {
   const [payload, setPayload] = useState(null);
   const segmentId = props.segmentId;
 
-  const club = props.club || clubs.bekk;
-
+  const club = getClub(props.club, props.lsClub);
+  writeStorage("club", club);
   const accessToken = useStoreState(state => state.accessToken);
 
   useEffect(() => {
