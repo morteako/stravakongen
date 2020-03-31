@@ -16,6 +16,7 @@ const Segmentboard = props => {
 
   const club = getClub(props.club, props.lsClub);
   writeStorage("club", club);
+
   const accessToken = useStoreState(state => state.accessToken);
 
   useEffect(() => {

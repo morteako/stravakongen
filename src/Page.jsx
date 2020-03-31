@@ -6,18 +6,22 @@ import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./calculation/api";
 import Dropdowns from "./Dropdowns";
-import useLocalStorage from "@rehooks/local-storage";
+import useLocalStorage, { writeStorage } from "@rehooks/local-storage";
+import { useEffect } from "react";
 
 const Page = props => {
-  const segmentGroupsFromUrl = props.match.params.segmentGroup;
+  const lsSegmentGroup = props.segmentGroup;
 
   const defaultSegmentGroup = "bml";
-  const startSegmentGroup = allGroups[segmentGroupsFromUrl]
-    ? segmentGroupsFromUrl
+  const startSegmentGroup = allGroups[lsSegmentGroup]
+    ? lsSegmentGroup
     : defaultSegmentGroup;
 
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
+
+  useEffect(() => writeStorage("segmentGroup", segmentGroup), [segmentGroup]);
+
   const [sortMode, setSortMode] = React.useState({ score: true });
   const [clicked, setClicked] = React.useState(false);
 
@@ -33,7 +37,6 @@ const Page = props => {
     // console.log(error);
   }
 
-  console.log(queryParams);
   const [lsClub] = useLocalStorage("club");
 
   const segmentsFromGroup = Object.values(allSegments)
