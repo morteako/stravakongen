@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as Api from "./calculation/api";
 import { useStoreActions, useStoreState } from "easy-peasy";
-import { clubs } from "./data/ids";
+import { clubs } from "./data/clubs";
 
 const urlFunctions = {
   all: Api.createSegmentLeaderboardClubFull,
