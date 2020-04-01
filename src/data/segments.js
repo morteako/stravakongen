@@ -46,12 +46,21 @@ export const allSegments = {
   },
   2783427: {
     id: 2783427,
-    name: "Sognsvann motsols, strand til strand",
+    name: "Sognsvann rundt motsols",
     groups: {
       lopekongen: 1,
-      allroundern: 1
+      allroundern: 1,
+      bliss: 1
     }
   },
+  2462560: {
+    id: 2462560,
+    name: "Sognsvann rundt medsols",
+    groups: {
+      bliss: 1
+    }
+  },
+
   2553283: {
     id: 2553283,
     name: "Tour de Finance løp",
@@ -84,12 +93,20 @@ export const allSegments = {
       bml: 1
     }
   },
+  5891167: {
+    id: 5891167,
+    name: "Sognsvann - Ullevålseter",
+    groups: {
+      bliss: 1
+    }
+  },
   1557103: {
     id: 1557103,
-    name: "Vettakollen opp langs eggen 2",
+    name: "Vettakollen opp",
     groups: {
       lopekongen: 1,
-      allroundern: 1
+      allroundern: 1,
+      bliss: 1
     }
   },
   5102820: {
@@ -103,14 +120,14 @@ export const allSegments = {
     id: 9358707,
     name: "Hammeren-Kikutkrysset",
     groups: {
-      "Kikut Sykkel": 1
+      "kikut-sykkel": 1
     }
   },
   1331159: {
     id: 1331159,
     name: "Zinoberveien - Kikut",
     groups: {
-      "Kikut Sykkel": 1
+      "kikut-sykkel": 1
     }
   },
   8059590: {
@@ -154,7 +171,8 @@ export const types = {
   cycling: "cycling",
   running: "running",
   downhill: "downhill",
-  climbing: "climbing"
+  climbing: "climbing",
+  bliss: "bliss"
 };
 
 export const filterGroupsOnTypes = club => {
@@ -210,5 +228,10 @@ export const allGroups = {
     navn: "Allrounder'n",
     emoji: Emojis.bikeRun,
     types: [types.cycling, types.running]
+  },
+  bliss: {
+    navn: "Bliss",
+    emoji: Emojis.run,
+    types: [types.running, types.bliss]
   }
 };
