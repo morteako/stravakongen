@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownDivider from "react-bootstrap/Dropdown";
 import styles from "./mystyle.module.css";
-import { allGroups, filterGroupsOnTypes } from "./data/segments";
+import { allGroups, filterGroupsOnTypes, getEmojis } from "./data/segments";
 import { getSortingName } from "./calculation/sorting";
 
 const dateRangeTitle = {
@@ -45,9 +45,7 @@ const Dropdowns = ({ props }) => {
         className={styles.dropdown_item}
         onClick={() => setSegmentGroup(groupSlug)}
       >
-        {allGroups[groupSlug].navn +
-          " " +
-          (allGroups[groupSlug] && allGroups[groupSlug].emoji)}
+        {allGroups[groupSlug].navn + getEmojis(groupSlug)}
       </Dropdown.Item>
     ));
   };
@@ -82,7 +80,7 @@ const Dropdowns = ({ props }) => {
           "Segmentgruppe : " +
           allGroups[segmentGroup].navn +
           " " +
-          allGroups[segmentGroup].emoji
+          getEmojis(segmentGroup)
         }
       >
         {/* {mapGroupsToItems(["bml", "klatrekongen"])}

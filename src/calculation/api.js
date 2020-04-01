@@ -25,6 +25,7 @@ export const useAccesToken = () => {
 };
 
 export const getRequest = (access_token, url) => {
+  console.log("request", url);
   return axios.request(url, {
     params: { access_token }
   });
@@ -33,7 +34,7 @@ const addParam = (url, key, value) => `${url}&${key}=${value}`;
 
 const addToStrava = (...args) => strava + args.join("/") + "?";
 
-export const createAthlete = id => addToStrava("athletes", id);
+// export const createAthlete = id => addToStrava("athletes", id);
 export const createSegment = id => addToStrava("segments", id);
 
 export const createSegmentLeaderboard = id =>
