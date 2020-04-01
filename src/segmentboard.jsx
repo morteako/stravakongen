@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import * as Api from "./calculation/api";
 import { useStoreActions, useStoreState } from "easy-peasy";
-import { clubs } from "./data/ids";
+import { getClub } from "./data/clubs";
+import { writeStorage } from "@rehooks/local-storage";
 
 const urlFunctions = {
   all: Api.createSegmentLeaderboardClubFull,
@@ -11,16 +12,14 @@ const urlFunctions = {
 const Segmentboard = props => {
   const [segmentPayload, setSegmentPayload] = useState(null);
   const [payload, setPayload] = useState(null);
-  const segmentId = props.segmentId;
-
-  const club = props.club || clubs.bekk;
+  const { club, segmentId } = props;
 
   const accessToken = useStoreState(state => state.accessToken);
 
   useEffect(() => {
     if (!accessToken) return;
     const leaderboardRequestCreator = urlFunctions[props.dateRange];
-    const req = leaderboardRequestCreator(club, segmentId);
+    const req = leaderboardRequestCreator(club.id, segmentId);
     Api.getRequest(accessToken, req).then(x => {
       setPayload({
         id: segmentId,

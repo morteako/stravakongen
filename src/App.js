@@ -2,6 +2,7 @@ import React from "react";
 import Page from "./Page";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { StoreProvider, createStore, action } from "easy-peasy";
+import useLocalStorage from "@rehooks/local-storage";
 
 const store = createStore({
   accessToken: null,
@@ -65,13 +66,21 @@ const zoomOutMobile = () => {
 };
 
 const App = () => {
+  const [segmentGroup] = useLocalStorage("segmentGroup");
+  const [lsClub] = useLocalStorage("club");
+
   zoomOutMobile();
   return (
     <StoreProvider store={store}>
       <Router>
         <Switch>
-          <Route path={"/:segmentGroup"} component={Page} />
-          <Route path={"/"} component={Page} />
+          {/* <Route path={"/:segmentGroup"} component={Page} /> */}
+          <Route
+            path={"/"}
+            component={props => (
+              <Page {...props} segmentGroup={segmentGroup} lsClub={lsClub} />
+            )}
+          />
         </Switch>
       </Router>
     </StoreProvider>

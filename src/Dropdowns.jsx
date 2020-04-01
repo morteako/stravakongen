@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownDivider from "react-bootstrap/Dropdown";
 import styles from "./mystyle.module.css";
-import { allGroups } from "./data/segments";
+import { allGroups, filterGroupsOnTypes } from "./data/segments";
 import { getSortingName } from "./calculation/sorting";
 
 const dateRangeTitle = {
@@ -20,7 +20,8 @@ const Dropdowns = ({ props }) => {
     currentSegments,
     setDateRange,
     setSortMode,
-    setSegmentGroup
+    setSegmentGroup,
+    club
   } = props;
 
   const { segmentRowClicked } = useStoreState(state => state);
@@ -71,9 +72,7 @@ const Dropdowns = ({ props }) => {
 
   const sortDropdownItems = [points, name, newest, divider, ...segments];
 
-  const restOfGroups = Object.keys(allGroups).filter(
-    x => !["klatrekongen", "lopekongen", "bml"].includes(x)
-  );
+  const restOfGroups = filterGroupsOnTypes(club);
 
   return (
     <div className={styles.button_row}>
@@ -86,8 +85,8 @@ const Dropdowns = ({ props }) => {
           allGroups[segmentGroup].emoji
         }
       >
-        {mapGroupsToItems(["bml", "klatrekongen", "lopekongen"])}
-        {divider}
+        {/* {mapGroupsToItems(["bml", "klatrekongen"])}
+        {divider} */}
         {mapGroupsToItems(restOfGroups)}
       </DropdownButton>
       <DropdownButton
