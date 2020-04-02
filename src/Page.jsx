@@ -1,5 +1,5 @@
 import React from "react";
-import SegmentBoard from "./segmentboard";
+import { useFetches } from "./segmentboard";
 import Scoreboard from "./Scoreboard";
 import { allGroups } from "./data/segments";
 import { allSegments } from "./data/segments";
@@ -48,6 +48,8 @@ const Page = props => {
   const club = getClub(queryParams.club, props.lsClub);
   writeStorage("club", club);
 
+  useFetches({ club, dateRange, currentSegments });
+
   return (
     <div>
       <Dropdowns
@@ -70,14 +72,6 @@ const Page = props => {
         clicked={clicked}
         setClicked={setClicked}
       />
-      {currentSegments.map((segId, ind) => (
-        <SegmentBoard
-          key={ind}
-          club={club}
-          dateRange={dateRange}
-          segmentId={segId}
-        />
-      ))}
     </div>
   );
 };

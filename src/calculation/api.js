@@ -44,7 +44,7 @@ export const createSegmentLeaderboardClub = (club, id) =>
   addParam(addToStrava("segments", id, "leaderboard"), "club_id", club);
 
 export const createSegmentLeaderboardClubFull = (club, id) =>
-  addParam(createSegmentLeaderboardClub(club, id), "per_page", 50);
+  addParam(createSegmentLeaderboardClub(club, id), "per_page", 200);
 
 export const createSegmentLeaderboardClubThisYear = (club, id) =>
   addParam(
