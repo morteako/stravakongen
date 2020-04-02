@@ -33,16 +33,16 @@ export const useFetches = props => {
 
   useStoreActions(actions => actions.addLeaderboard)(payload);
 
-  useEffect(() => {
-    console.log("segmentd");
-    if (!accessToken) return;
-    currentSegments.forEach(segmentId => {
-      const segReq = Api.createSegment(segmentId);
-      Api.getRequest(accessToken, segReq).then(x => {
-        setSegmentPayload(x.data);
-      });
-    });
-  }, [currentSegments, accessToken]);
+  // useEffect(() => {
+  //   // console.log("segmentd");
+  //   if (!accessToken) return;
+  //   currentSegments.forEach(segmentId => {
+  //     const segReq = Api.createSegment(segmentId);
+  //     Api.getRequest(accessToken, segReq).then(x => {
+  //       setSegmentPayload(x.data);
+  //     });
+  //   });
+  // }, [currentSegments, accessToken]);
 
   useStoreActions(actions => actions.addSegment)(segmentPayload);
 };

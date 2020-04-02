@@ -25,7 +25,7 @@ export const useAccesToken = () => {
 };
 
 export const getRequest = (access_token, url) => {
-  console.log("request", url);
+  // console.log("request", url);
   return axios.request(url, {
     params: { access_token }
   });
@@ -44,7 +44,7 @@ export const createSegmentLeaderboardClub = (club, id) =>
   addParam(addToStrava("segments", id, "leaderboard"), "club_id", club);
 
 export const createSegmentLeaderboardClubFull = (club, id) =>
-  addParam(createSegmentLeaderboardClub(club, id), "per_page", 200);
+  addParam(createSegmentLeaderboardClub(club, id), "per_page", 30);
 
 export const createSegmentLeaderboardClubThisYear = (club, id) =>
   addParam(

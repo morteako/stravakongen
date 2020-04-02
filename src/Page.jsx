@@ -21,7 +21,7 @@ const Page = props => {
   const [dateRange, setDateRange] = React.useState("all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
 
-  useEffect(() => writeStorage("segmentGroup", segmentGroup), [segmentGroup]);
+  // useEffect(() => writeStorage("segmentGroup", segmentGroup), [segmentGroup]);
 
   const [sortMode, setSortMode] = React.useState({ score: true });
   const [clicked, setClicked] = React.useState(false);
@@ -46,7 +46,7 @@ const Page = props => {
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
 
   const club = getClub(queryParams.club, props.lsClub);
-  writeStorage("club", club);
+  // writeStorage("club", club);
 
   useFetches({ club, dateRange, currentSegments });
 
