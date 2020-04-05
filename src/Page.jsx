@@ -6,9 +6,11 @@ import { allSegments } from "./data/segments";
 import * as qs from "query-string";
 import { useAccesToken } from "./calculation/api";
 import Dropdowns from "./Dropdowns";
+import ClubDropdown from "./ClubDropdown";
 import { writeStorage } from "@rehooks/local-storage";
 import { useEffect } from "react";
 import { getClub } from "./data/clubs";
+import styles from "./mystyle.module.css";
 
 const Page = props => {
   const lsSegmentGroup = props.segmentGroup;
@@ -46,10 +48,11 @@ const Page = props => {
     urlSegments.length > 0 ? urlSegments : segmentsFromGroup;
 
   const club = getClub(queryParams.club, props.lsClub);
-  writeStorage("club", club);
 
   return (
     <div>
+      <h1 class={styles.headerHeadline}>Stravakongen</h1>
+      <ClubDropdown club={club} />
       <Dropdowns
         props={{
           currentSegments,

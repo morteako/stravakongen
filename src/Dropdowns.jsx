@@ -66,7 +66,7 @@ const Dropdowns = ({ props }) => {
     </Dropdown.Item>
   ));
 
-  const divider = <DropdownDivider className={styles.divider} />;
+  const divider = <DropdownDivider key="divider" className={styles.divider} />;
 
   const sortDropdownItems = [points, name, newest, divider, ...segments];
 

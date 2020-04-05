@@ -12,7 +12,15 @@ const getClubHelper = club => {
 };
 
 export const clubs = {
-  bekk: { id: 8433, types: Object.values(types) },
-  bml: { id: 551609, types: [types.running, types.downhill] },
-  bliss: { id: 597247, types: [types.running, types.downhill, types.bliss] }
+  bekk: { id: 8433, name: "Bekk", types: Object.values(types) },
+  bml: {
+    id: 551609,
+    name: "Breaking Marathon Limits",
+    types: [types.running, types.downhill]
+  },
+  bliss: {
+    id: 597247,
+    name: "Bliss",
+    types: [types.running, types.downhill, types.bliss]
+  }
 };
