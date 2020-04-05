@@ -12,6 +12,8 @@ const ClubDropdown = props => {
       className={styles.dropdown_item}
       onClick={() => {
         writeStorage("club", club);
+        //temporary hack to avoid react "looping"
+        //and also clear results so that there is only result from current club
         window.location.reload(true);
       }}
     >
