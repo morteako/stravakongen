@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import * as Api from "./calculation/api";
 import { useStoreActions, useStoreState } from "easy-peasy";
-import { getClub } from "./data/clubs";
-import { writeStorage } from "@rehooks/local-storage";
 
 const urlFunctions = {
   all: Api.createSegmentLeaderboardClubFull,

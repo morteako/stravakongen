@@ -74,3 +74,15 @@
   color: red;
   border: 50px solid green;
 }
+.headerHeadline {
+  color: #fc4c02;
+  display: flex;
+}
+
+@media (pointer: fine) {
+  .headerHeadline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
