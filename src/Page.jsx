@@ -10,7 +10,6 @@ import ClubDropdown from "./ClubDropdown";
 import { writeStorage } from "@rehooks/local-storage";
 import { useEffect } from "react";
 import { getClub } from "./data/clubs";
-import styles from "./mystyle.module.css";
 
 const Page = props => {
   const lsSegmentGroup = props.segmentGroup;
@@ -51,7 +50,6 @@ const Page = props => {
 
   return (
     <div>
-      <h1 class={styles.headerHeadline}>Stravakongen</h1>
       <ClubDropdown club={club} />
       <Dropdowns
         props={{

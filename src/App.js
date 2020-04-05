@@ -4,6 +4,8 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { StoreProvider } from "easy-peasy";
 import useLocalStorage from "@rehooks/local-storage";
 import store from "./Store";
+import styles from "./mystyle.module.css";
+import InfoPage from "./InfoPage";
 
 const zoomOutMobile = () => {
   const viewport = document.querySelector('meta[name="viewport"]');
@@ -20,9 +22,10 @@ const App = () => {
   zoomOutMobile();
   return (
     <StoreProvider store={store}>
+      <h1 class={styles.headerHeadline}>Stravakongen</h1>
       <Router>
         <Switch>
-          {/* <Route path={"/:segmentGroup"} component={Page} /> */}
+          <Route path={"/info"} component={InfoPage} />
           <Route
             path={"/"}
             component={props => (

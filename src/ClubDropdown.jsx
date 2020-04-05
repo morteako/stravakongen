@@ -20,7 +20,7 @@ const ClubDropdown = props => {
       {club.name}
     </Dropdown.Item>
   ));
-
+  console.log(props.club);
   return (
     <div className={styles.button_row}>
       <DropdownButton
