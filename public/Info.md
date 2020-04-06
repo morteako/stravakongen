@@ -33,9 +33,13 @@ Man må bare spesifisere segment-idene som et URL-parameter på formen
 `?segments=[id1, id2, id3, ....]`
 
 For eksempel for å lage egen segmentgruppe med Jarmyra (2641676) og ned Wyller (9773343)
-https://morteako.github.io/stravakongen/#/?segments=[2641676,9773343]
+så kan man bruke URL-en https://morteako.github.io/stravakongen/#/?segments=[2641676,9773343]
 
 ## Kildekode
 
 Kildekoden er tilgjengelig på [Github](https://github.com/morteako/stravakongen).
 Alle bidrag til forbedringer og ny funksjonalitet mottas med takk.
+
+## Kontakt
+
+Spørsmål, svar

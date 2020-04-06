@@ -21,12 +21,12 @@ const ClubDropdown = props => {
     </Dropdown.Item>
   ));
   console.log(props.club);
+
+  const clubName = (props.club && props.club.name) || props.club;
+
   return (
     <div className={styles.button_row}>
-      <DropdownButton
-        className={styles.button}
-        title={"Klubb : " + props.club.name}
-      >
+      <DropdownButton className={styles.button} title={"Klubb : " + clubName}>
         {items}
       </DropdownButton>
     </div>

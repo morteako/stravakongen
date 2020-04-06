@@ -175,7 +175,9 @@ export const types = {
 export const filterGroupsOnTypes = club => {
   if (!club) return allGroups;
   return Object.keys(allGroups).filter(group =>
-    allGroups[group].types.every(type => club.types.includes(type))
+    allGroups[group].types.every(
+      type => !club.types || club.types.includes(type)
+    )
   );
 };
 
