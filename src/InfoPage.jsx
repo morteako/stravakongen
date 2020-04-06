@@ -1,13 +1,28 @@
 import React from "react";
+import styles from "./mystyle.module.css";
+
+const url = "https://morteako.github.io/stravakongen/";
+
+const A = props => <a href={props.href}> {props.href} </a>;
+
+const githubLink = (
+  <a href="https://github.com/morteako/stravakongen">Github </a>
+);
+const mail = (
+  <a href={"mailto:morten.aske.kolstad@hotmail.com"}>
+    {" "}
+    morten.aske.kolstad@hotmail.com
+  </a>
+);
 
 export const InfoPage = props => {
   return (
-    <div>
+    <div className={styles.infoDiv}>
       {" "}
       <h1> Stravakongen </h1>
       <h2> Poengsystem </h2>
-      Man kan sortere Stravakongen på flere måter, men det er **Poeng** som er
-      den essentielle sorteringen. Den lager en slags totalkonkurranse av å
+      Man kan sortere Stravakongen på flere måter, men det er <b>Poeng</b> som
+      er den essentielle sorteringen. Den lager en slags totalkonkurranse av å
       kombinere plasseringene på flere segmenter til en større, morsommere og
       viktigere? konkurranse. Poengsystemet fungerer slik: - Det er om å gjøre å
       få **færrest** poeng - For hvert segment så får hver deltager like mange
@@ -23,22 +38,19 @@ export const InfoPage = props => {
       <h2>Ekstra funksjonalitet</h2>
       <h3>Spesifiere klubb via URL-parameter</h3>
       Man kan spesifisere klubb ved å gi en klubb-id. Eksempel : Löplabbet Norge
-      har klubb-id 450816. URL-en
+      har klubb-id 450816. URL-en <A href={url + "?club=450816"} />
       <h3>Lage egen segmentgruppe</h3>
       Hvis man har en noen segmenter man vil lage en ledertavle for, så er det
       mulig! Man må bare spesifisere segment-idene som et URL-parameter på
       formen `?segments=[id1, id2, id3, ....]` For eksempel for å lage egen
-      segmentgruppe med Jarmyra (2641676) og ned Wyller (9773343) så kan man
-      bruke URL-en{" "}
-      <a href="https://morteako.github.io/stravakongen/#/?segments=[2641676,9773343]">
-        https://morteako.github.io/stravakongen/#/?segments=[2641676,9773343]
-      </a>
+      segmentgruppe med segmentene : Jarmyra (2641676) og ned Wyller (9773343),
+      så kan man bruke URL-en <A href={url + "?segments=[2641676,9773343]"} />
       <h2>Kildekode</h2>
-      Kildekoden er tilgjengelig på{" "}
-      <a href="https://github.com/morteako/stravakongen">Github </a>. Alle
-      bidrag til forbedringer og ny funksjonalitet mottas med takk.
+      Kildekoden er tilgjengelig på {githubLink}. Alle bidrag til forbedringer
+      og ny funksjonalitet mottas med takk.
       <h2>Kontakt</h2>
-      Spørsmål, svar
+      Innmelding av feil, spørsmål, og forslag til ny funksjonalitet kan
+      formidles via {githubLink} eller {mail}.
     </div>
   );
 };

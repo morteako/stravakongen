@@ -17,7 +17,7 @@ const Segmentboard = props => {
   useEffect(() => {
     if (!accessToken) return;
     const leaderboardRequestCreator = urlFunctions[props.dateRange];
-    const req = leaderboardRequestCreator(club.id, segmentId);
+    const req = leaderboardRequestCreator(club.id || club, segmentId);
     Api.getRequest(accessToken, req).then(x => {
       setPayload({
         id: segmentId,
