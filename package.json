@@ -2,7 +2,7 @@
   "name": "stravakongen",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://morteako.github.io/stravakongen/",
+  "homepage": "https://www.stravakongen.com/",
   "dependencies": {
     "@rehooks/local-storage": "^2.3.0",
     "axios": "^0.19.2",
