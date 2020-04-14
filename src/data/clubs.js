@@ -14,13 +14,13 @@ const getClubHelper = (club) => {
 export const clubs = {
   all: {
     id: "skip",
-    name: "Ingen klubb",
-    types: Object.values(types),
+    name: "Ingen valgt klubb",
+    types: [types.running, types.cycling, types.downhill, types.climbing],
   },
   bekk: {
     id: 8433,
     name: "Bekk",
-    types: Object.values(types),
+    types: [types.running, types.cycling, types.downhill, types.climbing],
   },
   bml: {
     id: 551609,
