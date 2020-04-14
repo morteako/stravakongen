@@ -70,7 +70,10 @@ const Dropdowns = ({ props }) => {
 
   const sortDropdownItems = [points, name, newest, divider, ...segments];
 
-  const restOfGroups = filterGroupsOnTypes(club);
+  const currentSegmentGroups = filterGroupsOnTypes(club);
+
+  const insertDivider = ([a, b, ...rest]) =>
+    [a, b, divider, ...rest]
 
   return (
     <div className={styles.button_row}>
@@ -83,9 +86,7 @@ const Dropdowns = ({ props }) => {
           getEmojis(segmentGroup)
         }
       >
-        {/* {mapGroupsToItems(["bml", "klatrekongen"])}
-        {divider} */}
-        {mapGroupsToItems(restOfGroups)}
+        {insertDivider(mapGroupsToItems(currentSegmentGroups))}
       </DropdownButton>
       <DropdownButton
         className={styles.button}
