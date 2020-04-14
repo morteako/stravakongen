@@ -6,8 +6,8 @@ export const createScoreEntry = (effortData, segmentData, clicked, ind) => {
   return effortData ? (
     <ScoreEntry key={ind} {...props} />
   ) : (
-    <EmptyScoreEntry key={ind} />
-  );
+      <EmptyScoreEntry key={ind} />
+    );
 };
 
 const secToMMSS = durationInSec => {
@@ -50,7 +50,7 @@ const ScoreEntry = props => {
   const date = formatDate(start_date_local);
 
   const elapsedTimeInSeconds = secToMMSS(elapsed_time);
-  const text = `${elapsedTimeInSeconds} (#${rank})`;
+  const text = <div><b>{elapsedTimeInSeconds}</b> {`- #${rank}`}</div>;
   const speedInfo = getSpeedInfo(elapsed_time, segmentData);
 
   const entryClasses = {
