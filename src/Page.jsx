@@ -51,7 +51,7 @@ const Page = props => {
 
   return (
     <div>
-      <h1 class={styles.headerHeadline}>Stravakongen</h1>
+      <h1 class={styles.headerHeadline}>STRAVAKONGEN</h1>
       <ClubDropdown club={club} />
       <Dropdowns
         props={{
