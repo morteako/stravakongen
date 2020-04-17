@@ -4,11 +4,13 @@ export const store = createStore({
   accessToken: null,
   athleteEfforts: {
     all: {},
-    year: {}
+    year: {},
+    month: {}
   },
   segmentLeaderboards: {
     all: {},
-    year: {}
+    year: {},
+    month: {}
   },
   segments: {},
   segmentRowClicked: false,

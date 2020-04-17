@@ -55,3 +55,10 @@ export const createSegmentLeaderboardClubThisYear = (club, id) =>
     "date_range",
     "this_year"
   );
+
+export const createSegmentLeaderboardClubThisMonth = (club, id) =>
+  addParam(
+    createSegmentLeaderboardClubFull(club, id),
+    "date_range",
+    "this_month"
+  );

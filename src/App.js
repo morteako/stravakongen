@@ -16,6 +16,7 @@ const zoomOutMobile = () => {
 const App = () => {
   const [segmentGroup] = useLocalStorage("segmentGroup");
   const [lsClub] = useLocalStorage("club");
+  const [period] = useLocalStorage("period");
 
   zoomOutMobile();
   return (
@@ -26,7 +27,7 @@ const App = () => {
           <Route
             path={"/"}
             component={props => (
-              <Page {...props} segmentGroup={segmentGroup} lsClub={lsClub} />
+              <Page {...props} segmentGroup={segmentGroup} lsClub={lsClub} period={period} />
             )}
           />
         </Switch>

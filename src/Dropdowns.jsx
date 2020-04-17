@@ -6,10 +6,12 @@ import DropdownDivider from "react-bootstrap/Dropdown";
 import styles from "./mystyle.module.css";
 import { allGroups, filterGroupsOnTypes, getEmojis } from "./data/segments";
 import { getSortingName } from "./calculation/sorting";
+import { writeStorage } from "@rehooks/local-storage";
 
 const dateRangeTitle = {
   all: "Gjennom alle tider",
-  year: "I år"
+  year: "I år",
+  month: "Denne måneden"
 };
 
 const Dropdowns = ({ props }) => {
@@ -31,7 +33,10 @@ const Dropdowns = ({ props }) => {
       <Dropdown.Item
         key={k}
         className={styles.dropdown_item}
-        onClick={_ => setDateRange(k)}
+        onClick={_ => {
+          writeStorage("period", k);
+          setDateRange(k)
+        }}
       >
         {v}
       </Dropdown.Item>

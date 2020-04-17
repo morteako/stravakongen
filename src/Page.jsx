@@ -13,6 +13,7 @@ import { getClub } from "./data/clubs";
 import styles from "./mystyle.module.css";
 
 const Page = props => {
+  console.log(props)
   const lsSegmentGroup = props.segmentGroup;
 
   const defaultSegmentGroup = "bml";
@@ -20,7 +21,7 @@ const Page = props => {
     ? lsSegmentGroup
     : defaultSegmentGroup;
 
-  const [dateRange, setDateRange] = React.useState("all");
+  const [dateRange, setDateRange] = React.useState(props.period || "all");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
 
   useEffect(() => writeStorage("segmentGroup", segmentGroup), [segmentGroup]);

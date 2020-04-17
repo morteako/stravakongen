@@ -5,6 +5,7 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 const urlFunctions = {
   all: Api.createSegmentLeaderboardClubFull,
   year: Api.createSegmentLeaderboardClubThisYear,
+  month: Api.createSegmentLeaderboardClubThisMonth,
 };
 
 const Segmentboard = (props) => {
@@ -18,8 +19,9 @@ const Segmentboard = (props) => {
     if (!accessToken) return;
     const leaderboardRequestCreator = urlFunctions[props.dateRange];
     const req = leaderboardRequestCreator(club.id || club, segmentId);
-
+    console.log(req)
     Api.getRequest(accessToken, req).then((x) => {
+      console.log(x)
       setPayload({
         id: segmentId,
         dateRange: props.dateRange,
