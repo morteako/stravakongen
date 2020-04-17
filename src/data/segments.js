@@ -139,7 +139,32 @@ export const allSegments = {
     groups: {
       tempokongen: 1
     }
-  }
+  },
+  23325175: {
+    groups: {
+      "nurc-trondheim": 1
+    }
+  },
+  23330779: {
+    groups: {
+      "nurc-trondheim": 1
+    }
+  },
+  23330813: {
+    groups: {
+      "nurc-trondheim": 1
+    }
+  },
+  23330843: {
+    groups: {
+      "nurc-trondheim": 1
+    }
+  },
+  23330762: {
+    groups: {
+      "nurc-trondheim": 1
+    }
+  },
 };
 //Hacky way to add ids to the objects. Reduces duplication
 Object.keys(allSegments).forEach(segmentId => allSegments[segmentId].id = segmentId)
@@ -213,5 +238,9 @@ export const allGroups = {
   bliss: {
     navn: "Bliss",
     types: [types.running, types.bliss]
+  },
+  "nurc-trondheim": {
+    navn: "NURC Trondheim",
+    types: [types.running]
   }
 };
