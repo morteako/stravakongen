@@ -5,6 +5,17 @@ import { StoreProvider } from "easy-peasy";
 import useLocalStorage from "@rehooks/local-storage";
 import store from "./Store";
 
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-163677104-1', {
+  debug: true,
+  titleCase: false,
+  gaOptions: {
+    siteSpeedSampleRate: 100
+  }
+});
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 const zoomOutMobile = () => {
   const viewport = document.querySelector('meta[name="viewport"]');
   if (viewport) {

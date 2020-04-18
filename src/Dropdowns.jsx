@@ -7,6 +7,7 @@ import styles from "./mystyle.module.css";
 import { allGroups, filterGroupsOnTypes, getEmojis } from "./data/segments";
 import { getSortingName } from "./calculation/sorting";
 import { writeStorage } from "@rehooks/local-storage";
+import * as GA from "./googleAnalytics"
 
 const dateRangeTitle = {
   all: "Gjennom alle tider",
@@ -35,6 +36,7 @@ const Dropdowns = ({ props }) => {
         className={styles.dropdown_item}
         onClick={_ => {
           writeStorage("period", k);
+          GA.changePeriod(k)
           setDateRange(k)
         }}
       >
@@ -48,7 +50,10 @@ const Dropdowns = ({ props }) => {
       <Dropdown.Item
         key={groupSlug}
         className={styles.dropdown_item}
-        onClick={() => setSegmentGroup(groupSlug)}
+        onClick={() => {
+          GA.changeSegmentGroup(groupSlug)
+          setSegmentGroup(groupSlug)
+        }}
       >
         {allGroups[groupSlug].navn + getEmojis(groupSlug)}
       </Dropdown.Item>
@@ -61,15 +66,22 @@ const Dropdowns = ({ props }) => {
 
   const storeSegments = useStoreState(state => state.segments);
 
-  const [points, name, newest, ...segments] = sortModes.map(sortMode => (
-    <Dropdown.Item
-      key={getSortingName(sortMode, storeSegments)}
-      className={styles.dropdown_item}
-      onClick={() => setSortMode(sortMode)}
-    >
-      {getSortingName(sortMode, storeSegments, segmentRowClicked)}
-    </Dropdown.Item>
-  ));
+  const [points, name, newest, ...segments] = sortModes.map(sortMode => {
+    const sortingName = getSortingName(sortMode, storeSegments, segmentRowClicked)
+    return (
+      <Dropdown.Item
+        key={sortingName}
+        className={styles.dropdown_item}
+        onClick={() => {
+          GA.changeSorting(sortingName)
+          setSortMode(sortMode)
+        }}
+      >
+        {sortingName}
+      </Dropdown.Item>
+    )
+  }
+  );
 
   const divider = <DropdownDivider key="divider" className={styles.divider} />;
 
