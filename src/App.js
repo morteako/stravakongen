@@ -1,6 +1,6 @@
 import React from "react";
 import Page from "./Page";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import { StoreProvider } from "easy-peasy";
 import useLocalStorage from "@rehooks/local-storage";
 import store from "./Store";
@@ -37,15 +37,12 @@ const App = () => {
   return (
     <StoreProvider store={store}>
       <Router>
-        <Switch>
-          {/* <Route path={"/:segmentGroup"} component={Page} /> */}
-          <Route
-            path={"/"}
-            component={props => (
-              <Page {...props} segmentGroup={segmentGroup} lsClub={lsClub} period={period} />
-            )}
-          />
-        </Switch>
+        <Route
+          path={"/"}
+          component={props => (
+            <Page {...props} segmentGroup={segmentGroup} lsClub={lsClub} period={period} />
+          )}
+        />
       </Router>
     </StoreProvider>
   );
