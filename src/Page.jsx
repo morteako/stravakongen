@@ -13,7 +13,6 @@ import { getClub } from "./data/clubs";
 import styles from "./mystyle.module.css";
 
 const Page = props => {
-  console.log(props)
   const lsSegmentGroup = props.segmentGroup;
 
   const defaultSegmentGroup = "bml";
@@ -52,7 +51,7 @@ const Page = props => {
 
   return (
     <div>
-      <h1 class={styles.headerHeadline}>STRAVAKONGEN</h1>
+      <h1 className={styles.headerHeadline}>STRAVAKONGEN</h1>
       <ClubDropdown club={club} />
       <Dropdowns
         props={{

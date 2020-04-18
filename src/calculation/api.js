@@ -8,7 +8,6 @@ export const useAccesToken = () => {
   const [token, setToken] = React.useState(null);
 
   React.useEffect(() => {
-    console.log("request)");
     axios
       .post(strava + "oauth/token", {
         client_id: process.env.REACT_APP_CLIENT_ID,
@@ -31,7 +30,6 @@ export const getRequest = (access_token, url) => {
   });
 };
 const addParam = (url, key, value) => {
-  console.log("val", key, value);
   return key !== "club" && value !== "skip" ? `${url}&${key}=${value}` : url;
 };
 
