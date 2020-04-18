@@ -7,14 +7,18 @@ import store from "./Store";
 
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('UA-163677104-1', {
-  debug: true,
-  titleCase: false,
-  gaOptions: {
-    siteSpeedSampleRate: 100
-  }
-});
-ReactGA.pageview(window.location.pathname + window.location.search);
+const isDevelopment = process.env.NODE_ENV === "development"
+
+if (isDevelopment) {
+  ReactGA.initialize('UA-163677104-1', {
+    debug: false,
+    titleCase: false,
+    gaOptions: {
+      siteSpeedSampleRate: 100
+    }
+  });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 const zoomOutMobile = () => {
   const viewport = document.querySelector('meta[name="viewport"]');
