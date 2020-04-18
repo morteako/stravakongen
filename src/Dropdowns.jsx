@@ -85,7 +85,7 @@ const Dropdowns = ({ props }) => {
 
   const divider = <DropdownDivider key="divider" className={styles.divider} />;
 
-  const sortDropdownItems = [points, name, newest, divider, ...segments];
+  const sortDropdownItems = [points, name, divider, ...segments];
 
   const currentSegmentGroups = filterGroupsOnTypes(club);
 
