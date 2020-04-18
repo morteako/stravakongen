@@ -9,7 +9,7 @@ import ReactGA from 'react-ga';
 
 const isDevelopment = process.env.NODE_ENV === "development"
 
-if (isDevelopment) {
+if (!isDevelopment) {
   ReactGA.initialize('UA-163677104-1', {
     debug: false,
     titleCase: false,
