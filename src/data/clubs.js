@@ -27,9 +27,9 @@ export const clubs = {
     name: "Breaking Marathon Limits",
     types: [types.running, types.downhill],
   },
-  bliss: {
-    id: 597247,
-    name: "Bliss",
-    types: [types.running, types.downhill, types.bliss],
-  },
+  // bliss: {
+  //   id: 597247,
+  //   name: "Bliss",
+  //   types: [types.running, types.downhill, types.bliss],
+  // },
 };
