@@ -20,7 +20,7 @@ const Page = props => {
     ? lsSegmentGroup
     : defaultSegmentGroup;
 
-  const [dateRange, setDateRange] = React.useState(props.period || "all");
+  const [dateRange, setDateRange] = React.useState(props.period || "year");
   const [segmentGroup, setSegmentGroup] = React.useState(startSegmentGroup);
 
   useEffect(() => writeStorage("segmentGroup", segmentGroup), [segmentGroup]);
