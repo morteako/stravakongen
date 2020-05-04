@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./mystyle.module.css";
+import { calcScore } from "./calculation/ranking";
 
 export const createScoreEntry = (effortData, segmentData, clicked, ind) => {
+
   const props = { ...effortData, segmentData, clicked };
+  
   return effortData ? (
     <ScoreEntry key={ind} {...props} />
   ) : (
-      <EmptyScoreEntry key={ind} />
+      <EmptyScoreEntry key={ind}/>
     );
 };
 
@@ -50,8 +53,16 @@ const ScoreEntry = props => {
   const date = formatDate(start_date_local);
 
   const elapsedTimeInSeconds = secToMMSS(elapsed_time);
-  const text = <div><b>{elapsedTimeInSeconds}</b> {`- #${rank}`}</div>;
+
+  const score = calcScore(rank)
+  const rankOrPoints = clicked 
+    ? score + "p"
+    : "#" + rank
+
+  const text = <div><b>{elapsedTimeInSeconds}</b> {`- ${rankOrPoints}`}</div>;
   const speedInfo = getSpeedInfo(elapsed_time, segmentData);
+
+  
 
   const entryClasses = {
     1: styles.entry_first,

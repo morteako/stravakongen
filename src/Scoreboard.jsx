@@ -1,7 +1,7 @@
 import React from "react";
 import { useStoreState } from "easy-peasy";
 import Table from "react-bootstrap/Table";
-import rankLowestPoints from "./calculation/ranking";
+import {rankHighestPoints} from "./calculation/ranking";
 import Row from "./Row";
 import SegmentLink from "./SegmentLink";
 import HeaderRow from "./HeaderRow";
@@ -43,7 +43,7 @@ const Scoreboard = props => {
       );
     });
 
-  const ranking = rankLowestPoints(allTime, segments, leaderboardsAllTime).sort(
+  const ranking = rankHighestPoints(allTime, segments, leaderboardsAllTime).sort(
     getSortingMode(sortingMode, segments, allTime)
   );
 
