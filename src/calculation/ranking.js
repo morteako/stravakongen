@@ -14,7 +14,7 @@ const fixSharedPosition = rankings => {
   return fixedRankPos;
 };
 
-const rankLowestPoints = (allTime, segments, leaderboards) => {
+const getRanking = (allTime, segments, leaderboards) => {
   const getNoEffortScore = segId => leaderboards[segId].length + 1;
 
   const getRank = (effort, segmentId) => {
@@ -43,4 +43,4 @@ const rankLowestPoints = (allTime, segments, leaderboards) => {
   return fixSharedPosition(summedArray);
 };
 
-export default rankLowestPoints;
+export default getRanking;
