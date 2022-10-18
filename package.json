@@ -5,7 +5,7 @@
   "homepage": "https://www.stravakongen.com/",
   "dependencies": {
     "@rehooks/local-storage": "^2.3.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "easy-peasy": "^3.3.0",
     "lodash": "^4.17.15",
